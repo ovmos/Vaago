@@ -1,0 +1,84 @@
+
+/*==================
+	ABOUT US SECTION
+====================*/
+#mu-about-us {
+    display: inline;
+    float: left;
+    width: 100%;
+    padding: 200px 0;
+  }
+  #mu-about-us .mu-about-us-area {
+    display: inline;
+    float: left;
+    width: 100%;
+  }
+  #mu-about-us .mu-about-us-area .mu-about-us-left {
+    display: inline;
+    float: left;
+    margin-top: 20px;
+    padding-top: 30px;
+    width: 100%;
+  }
+  #mu-about-us .mu-about-us-area .mu-about-us-left p {
+    line-height: 24px;
+  }
+  #mu-about-us .mu-about-us-area .mu-about-us-left ul {
+    margin-bottom: 20px;
+    padding-left: 20px;
+  }
+  #mu-about-us .mu-about-us-area .mu-about-us-left ul li {
+    line-height: 24px;
+    margin-bottom: 10px;
+  }
+  #mu-about-us .mu-about-us-area .mu-about-us-left ul li:before {
+    content: "\f24d";
+    font-family: fontAwesome;
+    margin-right: 10px;
+  }
+  #mu-about-us .mu-about-us-area .mu-about-us-right {
+    display: inline;
+    float: left;
+    margin-top: 20px;
+    padding-top: 30px;
+    width: 100%;
+  }
+  .mu-title {
+    display: inline;
+    float: left;
+    width: 100%;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  .mu-title .mu-subtitle {
+    font-size: 50px;
+    font-family: "Tangerine", cursive;
+    line-height: 30px;
+  }
+  .mu-title h2 {
+    color: #000;
+    font-size: 35px;
+    margin-bottom: 5px;
+  }
+  .mu-title i {
+    font-size: 18px;
+  }
+  .mu-title .mu-title-bar {
+    position: relative;
+  }
+  .mu-title .mu-title-bar::before {
+    content: "";
+    height: 2px;
+    left: 8px;
+    position: absolute;
+    top: 10px;
+    width: 100px;
+  }
+  .mu-title .mu-title-bar::after {
+    content: "";
+    height: 2px;
+    right: 15px;
+    position: absolute;
+    top: 10px;
+    width: 100px;
+  }

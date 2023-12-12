@@ -1,0 +1,57 @@
+﻿@model Vaago.Models.Account
+@{
+    if (Session["userID"] != null)
+    {
+        Response.Redirect("~/UProfile");
+    }
+}
+
+@{
+    ViewBag.Title = "Create Account";
+}
+
+
+<!-- main form -->
+<section id="mu-auth">
+    <div class="container">
+
+        @using (Html.BeginForm("Register_Account", "Authentication", FormMethod.Post, new { @class = "auth-form" }))
+        {
+            <form class="shadow-lg form-cont">
+
+                <h1 class="login-title display-4">Create Account</h1>
+                <hr>
+
+                <fieldset>
+                    <div class="form-group">
+                        <label class="form-label" for="name">Name</label>
+                        @Html.TextBoxFor(x => x.name, new { @required = "True", @id = "regname", @type = "text", @placeholder = "John Doe", @class = "form-control input" })
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="mail">Email</label>
+                        @Html.TextBoxFor(x => x.email, new { @required = "True", @id = "regmail", @type = "email", @placeholder = "jhon.doe@example.com", @class = "form-control input" })
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="password">Password</label>
+                        @Html.TextBoxFor(x => x.pass, new { @required = "True", @id = "regpassword", @type = "password", @placeholder = "Enter your password", @class = "form-control input" })
+                    </div>
+                    @*<div class="form-group">
+                            <label class="form-label" for="cpassword">Confirm Password</label>
+                            @Html.TextBoxFor(x => x.ConfirmPassword, new { @required = "True", @id = "regcpassword", @type = "password", @placeholder = "Confirm your password", @class = "form-control input" })
+                        </div>*@
+
+                    <div style="text-align: center" class="form-group">
+                        @Html.CheckBox("isActive", new { @required = "True", @id = "terms", @type = "checkbox" })
+                        <label class="light" for="development">I agree to terms & conditions</label>
+                    </div>
+                </fieldset>
+                <div class="d-flex flex-row justify-content-end">
+                    <button class="btn btn-auth" type="submit">Sign Up</button>
+                </div>
+                <div style="text-align: center">
+                    <label class="form-text">Already have an account, <a class="form-link" style="color: darkgoldenrod" href='@Url.Action("index", "Authentication")'>Login here</a></label>
+                </div>
+            </form>
+        }
+    </div>
+</section>

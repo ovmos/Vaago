@@ -1,0 +1,102 @@
+﻿
+#mu-checkout {
+    display: inline;
+    float: left;
+    padding: 200px 0;
+    width: 100%;
+}
+
+#mu-checkout .mu-checkout-area {
+    display: inline;
+    float: left;
+    width: 100%;
+}
+
+.mu-checkout-content {
+    display: inline;
+    float: left;
+    margin-top: 30px;
+    width: 100%;
+}
+
+
+#mu-checkout .mu-checkout-area .mu-checkout-content {
+    display: inline;
+    float: left;
+    margin-top: 30px;
+    width: 100%;
+}
+
+.mu-checkout-left {
+    display: inline;
+    float: left;
+    font-family: "Open Sans", sans-serif;
+    width: 100%;
+}
+
+#mu-checkout .mu-checkout-area .mu-checkout-content .mu-checkout-left .form-group {
+    margin-bottom: 25px;
+}
+
+#mu-checkout .mu-checkout-area .mu-checkout-content .mu-checkout-left .form-group label {
+    font-size: 16px;
+    margin-bottom: 8px;
+    letter-spacing: 0.5px;
+}
+
+#mu-checkout .mu-checkout-area .mu-checkout-content .mu-checkout-left .mu-checkout-form input[type="text"],
+#mu-checkout .mu-checkout-area .mu-checkout-content .mu-checkout-left .mu-checkout-form input[type="email"] {
+    color: black;
+    border-radius: 0;
+    height: 40px;
+}
+
+#mu-checkout .mu-checkout-area .mu-checkout-content .mu-checkout-left .mu-checkout-form input[type="text"]:focus,
+#mu-checkout .mu-checkout-area .mu-checkout-content .mu-checkout-left .mu-checkout-form input[type="email"]:focus {
+    box-shadow: none;
+}
+
+#mu-checkout .mu-checkout-area .mu-checkout-content .mu-checkout-left .mu-checkout-form textarea {
+    color: #000;
+    border-radius: 0;
+    padding: 10px;
+}
+
+#mu-checkout .mu-checkout-area .mu-checkout-content .mu-checkout-left .mu-checkout-form textarea:focus {
+    box-shadow: none;
+}
+ .mu-checkout-right {
+    display: inline;
+    float: left;
+    padding: 0 30px;
+    width: 100%;
+    background-color: #fff;
+}
+
+.checkoutBtnfinal {
+    background: #c1a35f;
+    border: 1px solid #999;
+    border-style: none none solid none;
+    cursor: pointer;
+    display: block;
+    color: #fff;
+    font-size: 20px;
+    font-weight: 300;
+    padding: 16px 0;
+    width: 290px;
+    text-align: center;
+    -webkit-transition: all .2s linear;
+    -moz-transition: all .2s linear;
+    -ms-transition: all .2s linear;
+    -o-transition: all .2s linear;
+    transition: all .2s linear;
+}
+
+
+.sec-cont {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 10%;
+}

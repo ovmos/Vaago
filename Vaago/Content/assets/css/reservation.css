@@ -1,0 +1,186 @@
+
+/*==================
+RESERVATION SECTION
+====================*/
+
+#mu-reservation {
+    background-color: #222;
+    display: inline;
+    float: left;
+    padding: 200px 0;
+    width: 100%;
+  }
+
+.btn-control {
+    justify-content: center;
+    text-align: center;
+    align-content: center;
+}
+.reservation-btn {
+    background-color: #fff;
+    font-family: "Open Sans", sans-serif;
+    display: inline-block;
+    font-size: 16px;
+    color: #c1a35f;
+    padding: 15px 35px;
+    position: relative;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -ms-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    transition: all 0.5s;
+}
+.reservation-btn::after {
+    bottom: 5px;
+    content: "";
+    border: 2px solid #c1a35f;
+    left: 5px;
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    -webkit-transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    -ms-transition: all 0.2s;
+    -o-transition: all 0.2s;
+    transition: all 0.2s;
+}
+.reservation-btn:hover,
+.reservation-btn:focus {
+    color: #fff;
+    background-color: #c1a35f;
+}
+.reservation-btn:hover::after,
+.reservation-btn:focus::after {
+    bottom: 0px;
+    content: "";
+    left: 0px;
+    right: 0px;
+    top: 0px;
+}
+
+*:before, *:after {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+
+
+  #mu-reservation .mu-reservation-area {
+    display: inline;
+    float: left;
+    width: 100%;
+  }
+  #mu-reservation .mu-reservation-area .mu-title h2 {
+    color: #fff;
+  }
+  #mu-reservation .mu-reservation-area .mu-reservation-content {
+    display: inline;
+    float: left;
+    margin-top: 20px;
+    padding: 0 5px;
+    width: 100%;
+  }
+  #mu-reservation .mu-reservation-area .mu-reservation-content h3 {
+    color: #fff;
+    display: inline-block;
+    padding-bottom: 10px;
+    font-weight: bold;
+  }
+  #mu-reservation .mu-reservation-area .mu-reservation-content p {
+    color: #fff;
+    letter-spacing: 0.5px;
+    padding: 0 50px;
+    text-align: center;
+  }
+  #mu-reservation .mu-reservation-area .mu-reservation-content .mu-reservation-form {
+    margin-top: 30px;
+    text-align: center;
+    
+  }
+  #mu-reservation .mu-reservation-area .mu-reservation-content .mu-reservation-form .form-control {
+    margin-bottom: 20px;
+  }
+  #mu-reservation .mu-reservation-area .mu-reservation-content .mu-reservation-form input[type="text"],
+  #mu-reservation .mu-reservation-area .mu-reservation-content .mu-reservation-form input[type="email"],
+  #mu-reservation .mu-reservation-area .mu-reservation-content .mu-reservation-form input[type="number"],
+  #mu-reservation .mu-reservation-area .mu-reservation-content .mu-reservation-form input[type="datetime-local"],
+  #mu-reservation .mu-reservation-area .mu-reservation-content .mu-reservation-form .form-select
+   {
+    border-radius: 0;
+    color: #000;
+    height: 40px;
+  }
+  #mu-reservation .mu-reservation-area .mu-reservation-content .mu-reservation-form input[type="text"]:focus,
+  #mu-reservation .mu-reservation-area .mu-reservation-content .mu-reservation-form input[type="email"]:focus {
+    box-shadow: none;
+  }
+  #mu-reservation .mu-reservation-area .mu-reservation-content .mu-reservation-form input[type="text"]::-webkit-input-placeholder,
+  #mu-reservation .mu-reservation-area .mu-reservation-content .mu-reservation-form input[type="email"]::-webkit-input-placeholder {
+    color: #555;
+  }
+  #mu-reservation .mu-reservation-area .mu-reservation-content .mu-reservation-form input[type="text"]:-moz-placeholder,
+  #mu-reservation .mu-reservation-area .mu-reservation-content .mu-reservation-form input[type="email"]:-moz-placeholder {
+    color: #555;
+  }
+  #mu-reservation .mu-reservation-area .mu-reservation-content .mu-reservation-form input[type="text"]::-moz-placeholder,
+  #mu-reservation .mu-reservation-area .mu-reservation-content .mu-reservation-form input[type="email"]::-moz-placeholder {
+    color: #555;
+  }
+  #mu-reservation .mu-reservation-area .mu-reservation-content .mu-reservation-form input[type="text"]:-ms-input-placeholder,
+  #mu-reservation .mu-reservation-area .mu-reservation-content .mu-reservation-form input[type="email"]:-ms-input-placeholder {
+    color: #555;
+  }
+  #mu-reservation .mu-reservation-area .mu-reservation-content .mu-reservation-form select {
+    border-radius: 0;
+    height: 40px;
+  }
+  #mu-reservation .mu-reservation-area .mu-reservation-content .mu-reservation-form select:focus {
+    box-shadow: none;
+  }
+  #mu-reservation .mu-reservation-area .mu-reservation-content .mu-reservation-form select option {
+    margin-bottom: 10px;
+    color: #000;
+  }
+  #mu-reservation .mu-reservation-area .mu-reservation-content .mu-reservation-form textarea {
+    border-radius: 0;
+    color: #000;
+    padding: 10px;
+  }
+  #mu-reservation .mu-reservation-area .mu-reservation-content .mu-reservation-form textarea:focus {
+    box-shadow: none;
+  }
+  #mu-reservation .mu-reservation-area .mu-reservation-content .mu-reservation-form textarea::-webkit-input-placeholder {
+    color: #555;
+  }
+  #mu-reservation .mu-reservation-area .mu-reservation-content .mu-reservation-form textarea:-moz-placeholder {
+    color: #555;
+  }
+  #mu-reservation .mu-reservation-area .mu-reservation-content .mu-reservation-form textarea::-moz-placeholder {
+    color: #555;
+  }
+  #mu-reservation .mu-reservation-area .mu-reservation-content .mu-reservation-form textarea:-ms-input-placeholder {
+    color: #555;
+  }
+  #mu-reservation .mu-reservation-area .mu-reservation-content .mu-reservation-form button[type="submit"] {
+    border: none;
+    margin-top: 20px;
+    margin-left: 15px;
+  }
+  
+  .datepicker {
+    border-radius: 0;
+    padding: 6px 10px;
+  }
+  
+  .datepicker .datepicker-switch, .datepicker .prev, .datepicker .next, .datepicker tfoot tr th {
+    font-size: 20px;
+  }
+  
+  .table-condensed > thead > tr > th, .table-condensed > tbody > tr > th, .table-condensed > tfoot > tr > th, .table-condensed > thead > tr > td, .table-condensed > tbody > tr > td, .table-condensed > tfoot > tr > td {
+    padding: 6px;
+  }
+  
+  .datepicker table tr td.day:hover {
+    color: #fff;
+  }

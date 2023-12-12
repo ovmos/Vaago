@@ -1,0 +1,53 @@
+﻿@model Vaago.Models.Login
+@{
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Welcome | Login</title>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="~/Content/assets/img/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="~/Content/AdminAssets/fonts/iconic/css/material-design-iconic-font.min.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/AdminAssets/css/util.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/AdminAssets/css/main.css">
+</head>
+<body>
+
+    <div class="limiter">
+        <div class="container-login100">
+            <div class="wrap-login100">
+                @using (Html.BeginForm("Login", "Admin", FormMethod.Post, new { @class = "login100-form validate-form" }))
+                {
+                    <span class="login100-form-logo">
+                        <i class="zmdi zmdi-landscape"></i>
+                    </span>
+
+                    <span class="login100-form-title p-b-34 p-t-27">
+                        Log in
+                    </span>
+
+                    <div class="wrap-input100 validate-input" data-validate="Enter username">
+                        @Html.TextBoxFor(x => x.Email, new { Required = "True", type = "Email", placeholder = "Enter email here", @class = "input100" })
+                        <span class="focus-input100" data-placeholder="&#xf207;"></span>
+                    </div>
+
+                    <div class="wrap-input100 validate-input" data-validate="Enter password">
+                        @Html.TextBoxFor(x => x.Password, new { Required="True", type = "password", placeholder = "Enter password here", @class = "input100" })
+                        <span class="focus-input100" data-placeholder="&#xf191;"></span>
+                    </div>
+
+                    <div class="container-login100-form-btn">
+                        <button class="btn btn-warning login100-form-btn">
+                            Login
+                        </button>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,181 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Vaago | @ViewBag.Title</title>
+
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="~/Content/assets/img/logo.png" type="image/x-icon" />
+    <!-- Font awesome -->
+    <link href="~/Content/assets/css/font-awesome.css" rel="stylesheet" />
+    <!-- Bootstrap -->
+    <link href="~/Content/assets/css/bootstrap.css" rel="stylesheet" />
+
+
+    <!-- Slick slider -->
+    <link rel="stylesheet" type="text/css" href="~/Content/assets/css/slick.css" />
+    <!-- Date Picker -->
+    <link rel="stylesheet" type="text/css" href="~/Content/assets/css/bootstrap-datepicker.css" />
+    <!-- Fancybox slider -->
+    <link rel="stylesheet" href="~/Content/assets/css/jquery.fancybox.css" type="text/css" media="screen" />
+    <!-- Theme color -->
+    <link id="switcher" href="~/Content/assets/css/theme-color/default-theme.css" rel="stylesheet" />
+    <!-- Main style sheet -->
+    <link href="~/Content/assets/css/aboutus.css" rel="stylesheet" />
+    <link href="~/Content/assets/css/cart.css" rel="stylesheet" />
+    <link href="~/Content/assets/css/contact.css" rel="stylesheet" />
+    <link href="~/Content/assets/css/gallery.css" rel="stylesheet" />
+    <link href="~/Content/assets/css/checkout.css" rel="stylesheet" />
+    <link href="~/Content/assets/css/reservation.css" rel="stylesheet" />
+    <link href="~/Content/assets/css/menu.css" rel="stylesheet" />
+    <link href="~/Content/assets/css/auth.css" rel="stylesheet" />
+    <link href="~/Content/assets/css/UserPages.css" rel="stylesheet" />
+
+    <link href="~/Content/style.css" rel="stylesheet" />
+    <!-- Google Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Tangerine' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Prata' rel='stylesheet' type='text/css'>
+</head>
+<body>
+    <!-- Pre Loader -->
+    <div id="aa-preloader-area">
+        <div class="mu-preloader">
+            <img src="~/Content/assets/img/preloader.gif" alt="loader img" />
+        </div>
+    </div>
+    <!--START SCROLL TOP BUTTON -->
+    <a class="scrollToTop" href="#">
+        <i class="fa fa-angle-up"></i>
+        <span>Top</span>
+    </a>
+    <!-- END SCROLL TOP BUTTON -->
+    <!-- Start header section -->
+    <header id="mu-header">
+        <nav class="navbar navbar-default mu-main-navbar" id="homepageheader" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <!-- FOR MOBILE VIEW COLLAPSED BUTTON -->
+                    <button type="button"
+                            class="navbar-toggle collapsed"
+                            data-toggle="collapse"
+                            data-target="#navbar"
+                            aria-expanded="false"
+                            aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <!-- LOGO -->
+                    <a class="navbar-brand" href="@Url.Action("Index", "Home")">
+                        <img src="~/Content/assets/img/logo.png" alt="Logo img" />
+                    </a>
+                </div>
+                <div id="navbar" class="navbar-collapse collapse">
+                    <ul id="top-menu" class="nav navbar-nav navbar-right mu-main-nav">
+                        <li><a href='@Url.Action("Index", "Home")'>HOME</a></li>
+                        <li><a href='@Url.Action("index", "Menu")'>MENU</a></li>
+                        <li><a href='@Url.Action("index", "Reservations")'>RESERVATION</a></li>
+                        <li><a href='@Url.Action("index", "Gallery")'>GALLERY</a></li>
+                        <li><a href='@Url.Action("index", "Contact")'>CONTACT</a></li>
+                        <li><a href='@Url.Action("index", "AboutUS")'>ABOUT US</a></li>
+                        <li><a href='javascript:void(0)'></a></li>
+                        <li><a href='@Url.Action("index","Cart")'><i class="fa fa-shopping-cart"></i></a></li>
+                        @{
+                            if (Session["userID"] != null)
+                            {
+                                <li class="dropdown">
+                                    <a class="dropbtn" href='@Url.Action("index", "Authentication")'><i class="fa fa-user"></i></a>
+                                    <div class="dropdown-content">
+                                        <a href="@Url.Action("Index","UProfile")">My Profile</a>
+                                        <a href="@Url.Action("Index","UOrderHistory")">My Orders</a>
+                                        <a href="@Url.Action("Logout_Account","Authentication")">Log out</a>
+                                    </div>
+                                </li>
+                            }
+                            else
+                            {
+                                <li class="dropdown">
+                                    <a class="dropbtn" href='@Url.Action("CreateAccount", "Authentication")'><i class="fa fa-user"></i></a>
+                                    <div class="dropdown-content">
+                                        <a href="@Url.Action("Index","Authentication")">Login</a>
+                                        <a href="@Url.Action("CreateAccount","Authentication")">Register</a>
+                                        <a href="@Url.Action("Index","Admin")">Admin</a>
+
+                                    </div>
+                                </li>
+                            }
+                        }
+
+
+
+                    </ul>
+                </div>
+                <!--/.nav-collapse -->
+            </div>
+        </nav>
+    </header>
+    <!-- End header section -->
+    <!-- MAIN CONTENT section -->
+    @RenderBody()
+    <!-- End MAIN CONTENT section -->
+    <!-- Start Footer -->
+    <footer id="mu-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="mu-footer-area">
+                        <div class="mu-footer-social">
+                            <a href="#"><span class="fa fa-facebook"></span></a>
+                            <a href="#"><span class="fa fa-twitter"></span></a>
+                            <a href="#"><span class="fa fa-google-plus"></span></a>
+                            <a href="#"><span class="fa fa-linkedin"></span></a>
+                            <a href="#"><span class="fa fa-youtube"></span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- End Footer -->
+    <!-- jQuery library -->
+    @Scripts.Render("~/Content/assets/js/jquery.min.js")
+    @RenderSection("scripts", required: false)
+
+    @Scripts.Render("~/Content/assets/js/bootstrap.js")
+    @RenderSection("scripts", required: false)
+
+    @Scripts.Render("~/Content/assets/js/slick.js")
+    @RenderSection("scripts", required: false)
+
+    @Scripts.Render("~/Content/assets/js/waypoints.js")
+    @RenderSection("scripts", required: false)
+
+    @Scripts.Render("~/Content/assets/js/jquery.counterup.js")
+    @RenderSection("scripts", required: false)
+
+    @Scripts.Render("~/Content/assets/js/bootstrap-datepicker.js")
+    @RenderSection("scripts", required: false)
+
+    @Scripts.Render("~/Content/assets/js/jquery.mixitup.js")
+    @RenderSection("scripts", required: false)
+
+
+    @Scripts.Render("~/Content/assets/js/jquery.fancybox.pack.js")
+    @RenderSection("scripts", required: false)
+
+    @Scripts.Render("~/Content/assets/js/custom.js")
+    @RenderSection("scripts", required: false)
+    @Scripts.Render("~/Content/assets/js/cart.js")
+    @RenderSection("scripts", required: false)
+    @Scripts.Render("~/Content/assets/js/checkout.js")
+    @RenderSection("scripts", required: false)
+    @Scripts.Render("~/Content/assets/js/user.js")
+    @RenderSection("scripts", required: false)
+
+</body>
+</html>

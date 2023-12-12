@@ -1,0 +1,62 @@
+﻿@model IEnumerable<Vaago.Models.Account>
+@{
+
+    ViewBag.Title = "AdminCustomers";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<section>
+    <div>
+        <span class="page-title">CUSTOMERS</span>
+        <hr />
+    </div>
+    <div class="maincard-cont">
+        <div style="text-align: start; width: 95%">
+            <button class="btn btn-danger" onclick="location.href='@Url.Action("DeleteItem","AdminMenu") '">Delete Item</button>
+        </div>
+        <hr class="thin-hr" />
+        <div class="table-div">
+            <table class="table table-striped  admintable">
+                <thead class="bg-dark text-white">
+                    <tr>
+                        <th><input type="checkbox"  /></th>
+                        <th>Account ID</th>
+                        <th>NAME</th>
+                        <th>EMAIL</th>
+                        <th>PHONE</th>
+                        <th>LOCATION</th>
+                        <th>Role</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{
+                        if (Model == null)
+                        {
+                            <tr></tr>
+                        }
+                        else
+                        {
+                            foreach (var item in Model)
+                            {
+                            <tr>
+                                <th><input type="checkbox" /></th>
+                                <td>@item.account_ID</td>
+                                <td>@item.name</td>
+                                <td>@item.email</td>
+                                <td>@item.phone</td>
+                                <td>@item.location</td>
+                                <td>User</td>
+                            </tr>
+                            };
+                        }
+                    }
+
+
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</section>
+
+

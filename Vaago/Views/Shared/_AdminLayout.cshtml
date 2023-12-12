@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Vaago Admin | @ViewBag.Title</title>
+
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="~/Content/assets/img/logo.png" type="image/x-icon" />
+    <!-- Font awesome -->
+    <link href="~/Content/assets/css/font-awesome.css" rel="stylesheet" />
+    <!-- Bootstrap -->
+    <link href="~/Content/assets/css/bootstrap.css" rel="stylesheet" />
+    <!-- Main style sheet -->
+    <link rel="stylesheet" href="~/Content/AdminAssets/css/adminStyle.css"
+
+</head>
+<body>
+    <header class="page-head">
+        <nav>
+            <a href="#0" aria-label="forecastr logo" class="logo" style="height: 40px">
+                <img src="~/Content/assets/img/logo.png" width="140" style="align-self: center" />
+            </a>
+            <button class="toggle-mob-menu" aria-expanded="false" aria-label="open menu"></button>
+            <ul class="admin-menu">
+                <li class="menu-heading">
+                    <h3>Admin</h3>
+                </li>
+                <li><a href="@Url.Action("Index", "Dashboard")"><span>DASHBOARD</span></a></li>
+                <li><a href="@Url.Action("Index", "AdminMenu")"><span>Menu</span></a></li>
+                <li><a href="@Url.Action("Index", "AdminOrders")"><span>Orders</span></a></li>
+                <li><a href="@Url.Action("Index", "AdminCustomers")"><span>Customer</span></a></li>
+                <li class="menu-heading">
+                    <h3>Actions</h3>
+                </li>
+                <li><a href="@Url.Action("Index", "Setting")"><span>Settings</span></a></li>
+                <li style="background-color: darkred"><a href="@Url.Action("Logout_Account","Admin")"><span>Logout</span></a></li>
+                <li>
+                    <div class="switch">
+                        <input type="checkbox" id="mode" checked>
+                        <label for="mode">
+                            <span></span>
+                            <span>Dark</span>
+                        </label>
+                    </div>
+                    <button class="collapse-btn" aria-expanded="true" aria-label="collapse menu"></button>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <section class="page-content">
+
+        @RenderBody()
+
+    </section>
+    @Scripts.Render("~/Content/assets/js/jquery.min.js")
+    @RenderSection("scripts", required: false)
+
+    @Scripts.Render("~/Content/assets/js/bootstrap.js")
+    @RenderSection("scripts", required: false)
+
+    @Scripts.Render("~/Content/AdminAssets/js/main.js")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

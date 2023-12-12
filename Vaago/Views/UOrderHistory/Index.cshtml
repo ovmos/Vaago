@@ -1,0 +1,79 @@
+﻿@model IEnumerable<Vaago.Models.Order>
+
+@{
+    if (Session["userID"] == null)
+    {
+        Response.Redirect("~/Authentication");
+    }
+}
+
+@{
+    ViewBag.Title = "Order History";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<section id="mu-user">
+    <div class="container-fluid" style="margin: 5px 35px">
+        <div class="col-md-12">
+            <div style="align-self:center" class="mu-user-area">
+                <div class="mu-title">
+                    <span class="mu-subtitle">My Area</span>
+                    <h2>Orders History</h2>
+                    <i class="fa fa-spoon"></i>
+                    <span class="mu-title-bar"></span>
+                </div>
+                <div class="mu-user-table shadow-lg">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <table class="table table-striped ">
+                                <thead class="bg-dark text-white">
+                                    <tr>
+                                        <th></th>
+                                        <th>Order ID</th>
+                                        <th>Date</th>
+                                        <th>Time</th>
+                                        <th>Items Quantity</th>
+                                        <th>City</th>
+                                        <th>Delivery Charges</th>
+                                        <th>Amount</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    @{
+                                        if (Model == null)
+                                        {
+                                            <tr></tr>
+                                        }
+                                        else
+                                        {
+                                            foreach (var item in Model)
+                                            {
+                                            <tr>
+                                                <td></td>
+                                               <td  style='margin:25px'> @item.orderID</td>
+                                                <td> @item.orderDate</td>
+                                                <td> @item.orderTime</td>
+                                                <td> @item.numberOfItems</td>
+                                                <td> @item.City</td>
+                                                <td>Rs. @item.deliveryCharges</td>
+                                                <td> @item.Amount</td>
+                                                <td> @item.orderStatus</td>
+                                                <td><button class="btn btn-sm" onclick="location.href='@Url.Action("ViewItem", "UOrderHistory", new { orderID=item.orderID })'">View</button></td>
+                                            </tr>
+                                                };
+                                            }
+                                        }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Contact section -->
+

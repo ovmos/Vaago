@@ -1,0 +1,54 @@
+﻿@model Vaago.Models.Login
+@{
+    ViewBag.Title = "Login";
+}
+
+@{
+    if (Session["userID"] != null)
+    {
+        Response.Redirect("~/UProfile");
+    }
+}
+
+
+
+<!-- Login form -->
+<section id="mu-auth">
+    <div class="container">
+
+        @using (Html.BeginForm("login_Account", "Authentication", FormMethod.Post, new { @class="auth-form"}))
+        {
+            if (@TempData["Msg"] != null)
+            {
+                <div class="alert alert-warning" role="alert">
+                    <strong>Error!</strong><h4>@TempData["Msg"]</h4>
+                </div>
+            }
+            <form class="form-cont shadow-lg " method="post">
+                <h1 class="login-title display-4">Login</h1>
+                <hr />
+
+                <fieldset>
+                    <div class="form-group">
+                        <label class="form-label" for="mail">Email</label>
+                        @Html.TextBoxFor(x => x.Email, new { @required = "True", @id = "loginEmail", @type = "email", @placeholder = "jhon.doe@example.com", @class = "form-control input" })
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="password">Password</label>
+                        @Html.TextBoxFor(x => x.Password, new { @required = "True", @id = "loginPassword", @type = "password", @class = "form-control input" })
+                    </div>
+
+                    <a style="text-align: end" href="javascript:void(0)" onclick="alert('Feature Coming Soon')"><label class="form-link">Forgot password?</label></a>
+                </fieldset>
+                <div class="d-flex flex-row justify-content-end">
+                    <button class="btn btn-auth" type="submit">Login</button>
+                </div>
+
+                <label class="text-center">
+                    Don't have an account, <a class="form-link" style="color: darkgoldenrod" href='@Url.Action("CreateAccount", "Authentication")'>Join us</a>
+                </label>
+            </form>
+        }
+        </div>
+    </section>

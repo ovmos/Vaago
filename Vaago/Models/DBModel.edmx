@@ -1,0 +1,506 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="VaagoProjectModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Accounts">
+          <Key>
+            <PropertyRef Name="account_ID" />
+          </Key>
+          <Property Name="account_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="account_type" Type="int" />
+          <Property Name="name" Type="nvarchar" MaxLength="320" />
+          <Property Name="email" Type="nvarchar" MaxLength="320" />
+          <Property Name="pass" Type="nvarchar" MaxLength="320" />
+          <Property Name="phone" Type="nvarchar" MaxLength="320" />
+          <Property Name="location" Type="nvarchar" MaxLength="320" />
+        </EntityType>
+        <EntityType Name="Cart">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="account_ID" Type="int" />
+          <Property Name="itemID" Type="int" />
+          <Property Name="itemQuantity" Type="int" />
+          <Property Name="totalAmount" Type="int" />
+        </EntityType>
+        <EntityType Name="Menu">
+          <Key>
+            <PropertyRef Name="itemID" />
+          </Key>
+          <Property Name="itemID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="itemName" Type="varchar" MaxLength="320" />
+          <Property Name="itemDesc" Type="varchar" MaxLength="320" />
+          <Property Name="itemImgpath" Type="varchar" MaxLength="320" />
+          <Property Name="itemCategory" Type="varchar" MaxLength="320" />
+          <Property Name="itemPrice" Type="varchar" MaxLength="320" />
+          <Property Name="itemSKU" Type="varchar" MaxLength="12" StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="Order_Details">
+          <Key>
+            <PropertyRef Name="detailID" />
+          </Key>
+          <Property Name="detailID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="orderID" Type="int" />
+          <Property Name="itemQuantity" Type="int" />
+          <Property Name="itemID" Type="int" />
+        </EntityType>
+        <EntityType Name="Orders">
+          <Key>
+            <PropertyRef Name="orderID" />
+          </Key>
+          <Property Name="orderID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CustomerID" Type="int" />
+          <Property Name="orderTime" Type="varchar" MaxLength="320" />
+          <Property Name="orderDate" Type="varchar" MaxLength="320" />
+          <Property Name="orderStatus" Type="varchar" MaxLength="320" />
+          <Property Name="numberOfItems" Type="varchar" MaxLength="320" />
+          <Property Name="Amount" Type="varchar" MaxLength="320" />
+          <Property Name="deliveryCharges" Type="varchar" MaxLength="320" />
+          <Property Name="City" Type="varchar" MaxLength="320" />
+          <Property Name="notes" Type="varchar" MaxLength="320" />
+        </EntityType>
+        <EntityType Name="Reservations">
+          <Key>
+            <PropertyRef Name="reserveID" />
+          </Key>
+          <Property Name="reserveID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Reservation Number" Type="varchar" MaxLength="15" StoreGeneratedPattern="Computed" />
+          <Property Name="byName" Type="nvarchar" MaxLength="320" />
+          <Property Name="byEmail" Type="nvarchar" MaxLength="320" />
+          <Property Name="byContact" Type="nvarchar" MaxLength="320" />
+          <Property Name="numberOfPersons" Type="int" />
+          <Property Name="reserveDateTime" Type="nvarchar" MaxLength="320" />
+          <Property Name="eventType" Type="nvarchar" MaxLength="320" />
+          <Property Name="byMessage" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Roles">
+          <Key>
+            <PropertyRef Name="roleID" />
+          </Key>
+          <Property Name="roleID" Type="int" Nullable="false" />
+          <Property Name="roleName" Type="varchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SiteMessages">
+          <Key>
+            <PropertyRef Name="msgID" />
+          </Key>
+          <Property Name="msgID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="msgName" Type="varchar" MaxLength="320" />
+          <Property Name="msgEmail" Type="varchar" MaxLength="320" />
+          <Property Name="msgSubject" Type="varchar" MaxLength="320" />
+          <Property Name="msgBody" Type="varchar" MaxLength="320" />
+        </EntityType>
+        <Association Name="FK__Accounts__accoun__2DE6D218">
+          <End Role="Roles" Type="Self.Roles" Multiplicity="0..1" />
+          <End Role="Accounts" Type="Self.Accounts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="roleID" />
+            </Principal>
+            <Dependent Role="Accounts">
+              <PropertyRef Name="account_type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Cart__itemID__1F63A897">
+          <End Role="Menu" Type="Self.Menu" Multiplicity="0..1" />
+          <End Role="Cart" Type="Self.Cart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Menu">
+              <PropertyRef Name="itemID" />
+            </Principal>
+            <Dependent Role="Cart">
+              <PropertyRef Name="itemID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Order_Det__itemI__7A3223E8">
+          <End Role="Menu" Type="Self.Menu" Multiplicity="0..1" />
+          <End Role="Order_Details" Type="Self.Order_Details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Menu">
+              <PropertyRef Name="itemID" />
+            </Principal>
+            <Dependent Role="Order_Details">
+              <PropertyRef Name="itemID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Order_Det__order__7849DB76">
+          <End Role="Orders" Type="Self.Orders" Multiplicity="0..1" />
+          <End Role="Order_Details" Type="Self.Order_Details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Orders">
+              <PropertyRef Name="orderID" />
+            </Principal>
+            <Dependent Role="Order_Details">
+              <PropertyRef Name="orderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Orders__Customer__756D6ECB">
+          <End Role="Accounts" Type="Self.Accounts" Multiplicity="0..1" />
+          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Accounts">
+              <PropertyRef Name="account_ID" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="VaagoProjectModelStoreContainer">
+          <EntitySet Name="Accounts" EntityType="Self.Accounts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cart" EntityType="Self.Cart" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Menu" EntityType="Self.Menu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Order_Details" EntityType="Self.Order_Details" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Reservations" EntityType="Self.Reservations" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SiteMessages" EntityType="Self.SiteMessages" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Accounts__accoun__2DE6D218" Association="Self.FK__Accounts__accoun__2DE6D218">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="Accounts" EntitySet="Accounts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cart__itemID__1F63A897" Association="Self.FK__Cart__itemID__1F63A897">
+            <End Role="Menu" EntitySet="Menu" />
+            <End Role="Cart" EntitySet="Cart" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Order_Det__itemI__7A3223E8" Association="Self.FK__Order_Det__itemI__7A3223E8">
+            <End Role="Menu" EntitySet="Menu" />
+            <End Role="Order_Details" EntitySet="Order_Details" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Order_Det__order__7849DB76" Association="Self.FK__Order_Det__order__7849DB76">
+            <End Role="Orders" EntitySet="Orders" />
+            <End Role="Order_Details" EntitySet="Order_Details" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Orders__Customer__756D6ECB" Association="Self.FK__Orders__Customer__756D6ECB">
+            <End Role="Accounts" EntitySet="Accounts" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="VaagoProjectModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Account">
+          <Key>
+            <PropertyRef Name="account_ID" />
+          </Key>
+          <Property Name="account_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="account_type" Type="Int32" />
+          <Property Name="name" Type="String" MaxLength="320" FixedLength="false" Unicode="true" />
+          <Property Name="email" Type="String" MaxLength="320" FixedLength="false" Unicode="true" />
+          <Property Name="pass" Type="String" MaxLength="320" FixedLength="false" Unicode="true" />
+          <Property Name="phone" Type="String" MaxLength="320" FixedLength="false" Unicode="true" />
+          <Property Name="location" Type="String" MaxLength="320" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Role" Relationship="Self.FK__Accounts__accoun__2DE6D218" FromRole="Accounts" ToRole="Roles" />
+          <NavigationProperty Name="Orders" Relationship="VaagoProjectModel.FK__Orders__Customer__756D6ECB" FromRole="Account" ToRole="Order" />
+        </EntityType>
+        <EntityType Name="Menu">
+          <Key>
+            <PropertyRef Name="itemID" />
+          </Key>
+          <Property Name="itemID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="itemName" Type="String" MaxLength="320" FixedLength="false" Unicode="false" />
+          <Property Name="itemDesc" Type="String" MaxLength="320" FixedLength="false" Unicode="false" />
+          <Property Name="itemImgpath" Type="String" MaxLength="320" FixedLength="false" Unicode="false" />
+          <Property Name="itemCategory" Type="String" MaxLength="320" FixedLength="false" Unicode="false" />
+          <Property Name="itemPrice" Type="String" MaxLength="320" FixedLength="false" Unicode="false" />
+          <Property Name="itemSKU" Type="String" MaxLength="12" FixedLength="false" Unicode="false" annotation:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="Order_Details" Relationship="Self.FK__Order_Det__itemI__7A3223E8" FromRole="Menu" ToRole="Order_Details" />
+          <NavigationProperty Name="Carts" Relationship="VaagoProjectModel.FK__Cart__itemID__1B9317B3" FromRole="Menu" ToRole="Cart" />
+        </EntityType>
+        <EntityType Name="Order_Details">
+          <Key>
+            <PropertyRef Name="detailID" />
+          </Key>
+          <Property Name="detailID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="orderID" Type="Int32" />
+          <Property Name="itemQuantity" Type="Int32" />
+          <Property Name="itemID" Type="Int32" />
+          <NavigationProperty Name="Menu" Relationship="Self.FK__Order_Det__itemI__7A3223E8" FromRole="Order_Details" ToRole="Menu" />
+          <NavigationProperty Name="Order" Relationship="VaagoProjectModel.FK__Order_Det__order__7849DB76" FromRole="Order_Details" ToRole="Order" />
+        </EntityType>
+        <EntityType Name="Reservation">
+          <Key>
+            <PropertyRef Name="reserveID" />
+          </Key>
+          <Property Name="reserveID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Reservation_Number" Type="String" MaxLength="15" FixedLength="false" Unicode="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="byName" Type="String" MaxLength="320" FixedLength="false" Unicode="true" />
+          <Property Name="byEmail" Type="String" MaxLength="320" FixedLength="false" Unicode="true" />
+          <Property Name="byContact" Type="String" MaxLength="320" FixedLength="false" Unicode="true" />
+          <Property Name="numberOfPersons" Type="Int32" />
+          <Property Name="reserveDateTime" Type="String" MaxLength="320" FixedLength="false" Unicode="true" />
+          <Property Name="eventType" Type="String" MaxLength="320" FixedLength="false" Unicode="true" />
+          <Property Name="byMessage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="roleID" />
+          </Key>
+          <Property Name="roleID" Type="Int32" Nullable="false" />
+          <Property Name="roleName" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Accounts" Relationship="Self.FK__Accounts__accoun__2DE6D218" FromRole="Roles" ToRole="Accounts" />
+        </EntityType>
+        <EntityType Name="SiteMessage">
+          <Key>
+            <PropertyRef Name="msgID" />
+          </Key>
+          <Property Name="msgID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="msgName" Type="String" MaxLength="320" FixedLength="false" Unicode="false" />
+          <Property Name="msgEmail" Type="String" MaxLength="320" FixedLength="false" Unicode="false" />
+          <Property Name="msgSubject" Type="String" MaxLength="320" FixedLength="false" Unicode="false" />
+          <Property Name="msgBody" Type="String" MaxLength="320" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK__Accounts__accoun__2DE6D218">
+          <End Role="Roles" Type="Self.Role" Multiplicity="0..1" />
+          <End Role="Accounts" Type="Self.Account" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="roleID" />
+            </Principal>
+            <Dependent Role="Accounts">
+              <PropertyRef Name="account_type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Order_Det__itemI__7A3223E8">
+          <End Role="Menu" Type="Self.Menu" Multiplicity="0..1" />
+          <End Role="Order_Details" Type="Self.Order_Details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Menu">
+              <PropertyRef Name="itemID" />
+            </Principal>
+            <Dependent Role="Order_Details">
+              <PropertyRef Name="itemID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="VaagoProjectEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Accounts" EntityType="Self.Account" />
+          <EntitySet Name="Menus" EntityType="Self.Menu" />
+          <EntitySet Name="Order_Details" EntityType="Self.Order_Details" />
+          <EntitySet Name="Reservations" EntityType="Self.Reservation" />
+          <EntitySet Name="Roles" EntityType="Self.Role" />
+          <EntitySet Name="SiteMessages" EntityType="Self.SiteMessage" />
+          <AssociationSet Name="FK__Accounts__accoun__2DE6D218" Association="Self.FK__Accounts__accoun__2DE6D218">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="Accounts" EntitySet="Accounts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Order_Det__itemI__7A3223E8" Association="Self.FK__Order_Det__itemI__7A3223E8">
+            <End Role="Menu" EntitySet="Menus" />
+            <End Role="Order_Details" EntitySet="Order_Details" />
+          </AssociationSet>
+          <EntitySet Name="Carts" EntityType="VaagoProjectModel.Cart" />
+          <AssociationSet Name="FK__Cart__itemID__1B9317B3" Association="VaagoProjectModel.FK__Cart__itemID__1B9317B3">
+            <End Role="Menu" EntitySet="Menus" />
+            <End Role="Cart" EntitySet="Carts" />
+          </AssociationSet>
+          <EntitySet Name="Orders" EntityType="VaagoProjectModel.Order" />
+          <AssociationSet Name="FK__Orders__Customer__756D6ECB" Association="VaagoProjectModel.FK__Orders__Customer__756D6ECB">
+            <End Role="Account" EntitySet="Accounts" />
+            <End Role="Order" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Order_Det__order__7849DB76" Association="VaagoProjectModel.FK__Order_Det__order__7849DB76">
+            <End Role="Order" EntitySet="Orders" />
+            <End Role="Order_Details" EntitySet="Order_Details" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="Cart">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="account_ID" Type="Int32" />
+          <Property Name="itemID" Type="Int32" />
+          <Property Name="itemQuantity" Type="Int32" />
+          <Property Name="totalAmount" Type="Int32" />
+          <NavigationProperty Name="Menu" Relationship="VaagoProjectModel.FK__Cart__itemID__1B9317B3" FromRole="Cart" ToRole="Menu" />
+        </EntityType>
+        <Association Name="FK__Cart__itemID__1B9317B3">
+          <End Type="VaagoProjectModel.Menu" Role="Menu" Multiplicity="0..1" />
+          <End Type="VaagoProjectModel.Cart" Role="Cart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Menu">
+              <PropertyRef Name="itemID" />
+            </Principal>
+            <Dependent Role="Cart">
+              <PropertyRef Name="itemID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="orderID" />
+          </Key>
+          <Property Name="orderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerID" Type="Int32" />
+          <Property Name="orderTime" Type="String" MaxLength="320" FixedLength="false" Unicode="false" />
+          <Property Name="orderDate" Type="String" MaxLength="320" FixedLength="false" Unicode="false" />
+          <Property Name="orderStatus" Type="String" MaxLength="320" FixedLength="false" Unicode="false" />
+          <Property Name="numberOfItems" Type="String" MaxLength="320" FixedLength="false" Unicode="false" />
+          <Property Name="Amount" Type="String" MaxLength="320" FixedLength="false" Unicode="false" />
+          <Property Name="deliveryCharges" Type="String" MaxLength="320" FixedLength="false" Unicode="false" />
+          <Property Name="City" Type="String" MaxLength="320" FixedLength="false" Unicode="false" />
+          <Property Name="notes" Type="String" MaxLength="320" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Account" Relationship="VaagoProjectModel.FK__Orders__Customer__756D6ECB" FromRole="Order" ToRole="Account" />
+          <NavigationProperty Name="Order_Details" Relationship="VaagoProjectModel.FK__Order_Det__order__7849DB76" FromRole="Order" ToRole="Order_Details" />
+        </EntityType>
+        <Association Name="FK__Orders__Customer__756D6ECB">
+          <End Type="VaagoProjectModel.Account" Role="Account" Multiplicity="0..1" />
+          <End Type="VaagoProjectModel.Order" Role="Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="account_ID" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Order_Det__order__7849DB76">
+          <End Type="VaagoProjectModel.Order" Role="Order" Multiplicity="0..1" />
+          <End Type="VaagoProjectModel.Order_Details" Role="Order_Details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="orderID" />
+            </Principal>
+            <Dependent Role="Order_Details">
+              <PropertyRef Name="orderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="VaagoProjectModelStoreContainer" CdmEntityContainer="VaagoProjectEntities">
+          <EntitySetMapping Name="Accounts">
+            <EntityTypeMapping TypeName="VaagoProjectModel.Account">
+              <MappingFragment StoreEntitySet="Accounts">
+                <ScalarProperty Name="account_ID" ColumnName="account_ID" />
+                <ScalarProperty Name="account_type" ColumnName="account_type" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="pass" ColumnName="pass" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="location" ColumnName="location" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Menus">
+            <EntityTypeMapping TypeName="VaagoProjectModel.Menu">
+              <MappingFragment StoreEntitySet="Menu">
+                <ScalarProperty Name="itemID" ColumnName="itemID" />
+                <ScalarProperty Name="itemName" ColumnName="itemName" />
+                <ScalarProperty Name="itemDesc" ColumnName="itemDesc" />
+                <ScalarProperty Name="itemImgpath" ColumnName="itemImgpath" />
+                <ScalarProperty Name="itemCategory" ColumnName="itemCategory" />
+                <ScalarProperty Name="itemPrice" ColumnName="itemPrice" />
+                <ScalarProperty Name="itemSKU" ColumnName="itemSKU" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Order_Details">
+            <EntityTypeMapping TypeName="VaagoProjectModel.Order_Details">
+              <MappingFragment StoreEntitySet="Order_Details">
+                <ScalarProperty Name="detailID" ColumnName="detailID" />
+                <ScalarProperty Name="orderID" ColumnName="orderID" />
+                <ScalarProperty Name="itemQuantity" ColumnName="itemQuantity" />
+                <ScalarProperty Name="itemID" ColumnName="itemID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Reservations">
+            <EntityTypeMapping TypeName="VaagoProjectModel.Reservation">
+              <MappingFragment StoreEntitySet="Reservations">
+                <ScalarProperty Name="reserveID" ColumnName="reserveID" />
+                <ScalarProperty Name="Reservation_Number" ColumnName="Reservation Number" />
+                <ScalarProperty Name="byName" ColumnName="byName" />
+                <ScalarProperty Name="byEmail" ColumnName="byEmail" />
+                <ScalarProperty Name="byContact" ColumnName="byContact" />
+                <ScalarProperty Name="numberOfPersons" ColumnName="numberOfPersons" />
+                <ScalarProperty Name="reserveDateTime" ColumnName="reserveDateTime" />
+                <ScalarProperty Name="eventType" ColumnName="eventType" />
+                <ScalarProperty Name="byMessage" ColumnName="byMessage" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="VaagoProjectModel.Role">
+              <MappingFragment StoreEntitySet="Roles">
+                <ScalarProperty Name="roleID" ColumnName="roleID" />
+                <ScalarProperty Name="roleName" ColumnName="roleName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SiteMessages">
+            <EntityTypeMapping TypeName="VaagoProjectModel.SiteMessage">
+              <MappingFragment StoreEntitySet="SiteMessages">
+                <ScalarProperty Name="msgID" ColumnName="msgID" />
+                <ScalarProperty Name="msgName" ColumnName="msgName" />
+                <ScalarProperty Name="msgEmail" ColumnName="msgEmail" />
+                <ScalarProperty Name="msgSubject" ColumnName="msgSubject" />
+                <ScalarProperty Name="msgBody" ColumnName="msgBody" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Carts">
+            <EntityTypeMapping TypeName="VaagoProjectModel.Cart">
+              <MappingFragment StoreEntitySet="Cart">
+                <ScalarProperty Name="totalAmount" ColumnName="totalAmount" />
+                <ScalarProperty Name="itemQuantity" ColumnName="itemQuantity" />
+                <ScalarProperty Name="itemID" ColumnName="itemID" />
+                <ScalarProperty Name="account_ID" ColumnName="account_ID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Orders">
+            <EntityTypeMapping TypeName="VaagoProjectModel.Order">
+              <MappingFragment StoreEntitySet="Orders">
+                <ScalarProperty Name="notes" ColumnName="notes" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="deliveryCharges" ColumnName="deliveryCharges" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="numberOfItems" ColumnName="numberOfItems" />
+                <ScalarProperty Name="orderStatus" ColumnName="orderStatus" />
+                <ScalarProperty Name="orderDate" ColumnName="orderDate" />
+                <ScalarProperty Name="orderTime" ColumnName="orderTime" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="orderID" ColumnName="orderID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

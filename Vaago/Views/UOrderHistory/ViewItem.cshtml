@@ -1,0 +1,152 @@
+﻿@using Vaago.Models
+@model IEnumerable<ViewModel>
+
+@{
+
+    if (Session["userID"] == null)
+    {
+        Response.Redirect("~/Authentication");
+    }
+}
+
+@{
+    ViewBag.Title = "Order Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    IDictionary<string, string> detailObj = new Dictionary<string, string>();
+
+    foreach (var i in Model)
+    {
+        detailObj.Add("Username", i.customer.name);
+        detailObj.Add("Phone", i.customer.phone);
+        detailObj.Add("City", i.order.City);
+        detailObj.Add("Address", i.customer.location);
+        detailObj.Add("oTime", i.order.orderTime);
+        detailObj.Add("oDate", i.order.orderDate);
+        detailObj.Add("oAmount", i.order.Amount);
+        detailObj.Add("oNotes", i.order.notes);
+        detailObj.Add("oStatus", i.order.orderStatus);
+        //detailObj.Add("totalAmount", (i.cartItem.totalAmount).ToString());
+        break;
+    }
+}
+
+
+<style>
+    label {
+        border-bottom: 1.3px solid #C1A35F;
+        font-size: 18px
+    }
+
+    tr {
+        padding: 15px;
+        overflow: hidden
+    }
+
+    td, p {
+        font-family: 'Segoe UI'
+    }
+</style>
+<section id="mu-user">
+    <div class="col-md-12">
+        <div style="align-self:center" class="mu-user-area">
+            <div class="mu-title">
+                <span class="mu-subtitle">My Area</span>
+                <h2>Orders History</h2>
+                <i class="fa fa-spoon"></i>
+                <span class="mu-title-bar"></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-12 shadow-lg" style="margin: 80px; padding:  25px 15px; width: 90%; border: 2px solid #c79e00;">
+        <div class="col-md-6" style="justify-content: flex-start">
+            <div class="col-md-6" style="padding: 10px">
+                <label>Order By</label>
+                <p>@detailObj["Username"]</p>
+            </div>
+            <div style="padding: 10px">
+                <label>Contact</label>
+                <p>@detailObj["Phone"]</p>
+            </div>
+
+            <div class="col-md-6" style="padding: 10px">
+                <label>City</label>
+                <p>@detailObj["City"]</p>
+            </div>
+            <div class="col-md-6" style="padding: 10px">
+                <label>Address</label>
+                <p>@detailObj["Address"]</p>
+            </div>
+
+        </div>
+
+        <div class="col-md-6" style="justify-content: flex-start">
+            <div class="col-md-6" style="padding: 10px">
+                <label>Order Time</label>
+                <p>@detailObj["oTime"]</p>
+            </div>
+            <div style="padding: 10px">
+                <label>Order Date</label>
+                <p>@detailObj["oDate"]</p>
+            </div>
+
+            <div class="col-md-6" style="padding: 10px">
+                <label>Amount</label>
+                <p>@detailObj["oAmount"]</p>
+            </div>
+            <div class="col-md-6" style="padding: 10px">
+                <label>Notes</label>
+                <p>@detailObj["oNotes"]</p>
+            </div>
+            <div class="col-md-12" style="padding: 10px">
+                <label>Status</label>
+                <p>@detailObj["oStatus"]</p>
+            </div>
+
+        </div>
+
+
+
+        <div class="col-md-12" style=" margin: 30px 10px">
+            <div class="mu-title" style="padding: 15px">
+                <span class="mu-subtitle">Items</span>
+            </div>
+            <table class="table table-striped" style="border: 1px solid #C1A35F ">
+                <thead class="bg-dark text-white">
+                    <tr>
+                        <th>SKU</th>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Category</th>
+                        <th>Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @{
+                        if (Model == null)
+                        {
+                            <tr></tr>
+                        }
+                        else
+                        {
+                            foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@item.menuItem.itemSKU</td>
+                                    <td> @item.menuItem.itemName</td>
+                                    <td> @item.menuItem.itemDesc</td>
+                                    <td> @item.menuItem.itemCategory</td>
+                                    <td>Rs. @item.menuItem.itemPrice</td>
+                                </tr>
+                            };
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</section>
+

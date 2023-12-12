@@ -1,0 +1,123 @@
+/*==================
+ MENU ITEM SECTION
+====================*/
+#mu-restaurant-menu {
+    display: inline;
+    float: left;
+    width: 100%;
+    padding: 200px 0;
+  }
+  #mu-restaurant-menu .mu-restaurant-menu-area {
+    display: inline;
+    float: left;
+    width: 100%;
+  }
+  #mu-restaurant-menu .mu-restaurant-menu-area .mu-restaurant-menu-content {
+    display: inline;
+    float: left;
+    margin-top: 30px;
+    width: 100%;
+  }
+  #mu-restaurant-menu .mu-restaurant-menu-area .mu-restaurant-menu-content .mu-restaurant-menu {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+  }
+  #mu-restaurant-menu .mu-restaurant-menu-area .mu-restaurant-menu-content .mu-restaurant-menu li {
+    display: inline-block;
+    float: none;
+  }
+  #mu-restaurant-menu .mu-restaurant-menu-area .mu-restaurant-menu-content .mu-restaurant-menu li a {
+    font-family: "Open Sans", sans-serif;
+    font-size: 18px;
+    border-radius: 0;
+    color: #fff;
+    font-size: 18px;
+    margin: 0 15px;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -ms-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    transition: all 0.5s;
+  }
+  #mu-restaurant-menu .mu-restaurant-menu-area .mu-restaurant-menu-content .mu-restaurant-menu .active a,
+  #mu-restaurant-menu .mu-restaurant-menu-area .mu-restaurant-menu-content .mu-restaurant-menu .active a:hover,
+  #mu-restaurant-menu .mu-restaurant-menu-area .mu-restaurant-menu-content .mu-restaurant-menu .active a:focus {
+    background-color: #FFF;
+  }
+  #mu-restaurant-menu .mu-restaurant-menu-area .mu-restaurant-menu-content .mu-tab-content-area {
+    display: inline;
+    float: left;
+    width: 100%;
+    padding: 50px 0;
+  }
+  #mu-restaurant-menu .mu-restaurant-menu-area .mu-restaurant-menu-content .mu-tab-content-area .mu-tab-content-left {
+    display: inline;
+    float: left;
+    padding-right: 15px;
+    width: 100%;
+  }
+  #mu-restaurant-menu .mu-restaurant-menu-area .mu-restaurant-menu-content .mu-tab-content-area .mu-tab-content-right {
+    display: inline;
+    float: left;
+    padding-left: 15px;
+    width: 100%;
+  }
+    #mu-restaurant-menu .mu-restaurant-menu-area .mu-restaurant-menu-content .mu-tab-content-area .mu-menu-item-nav li {
+        border-bottom: 1px dashed #ccc;
+        display: inline;
+        float: left;
+        margin-bottom: 30px;
+        padding-bottom: 15px;
+        width: 45%;
+        margin-right: 5%;
+    }
+  #mu-restaurant-menu .mu-restaurant-menu-area .mu-restaurant-menu-content .mu-tab-content-area .mu-menu-item-nav li:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+  }
+  #mu-restaurant-menu .mu-restaurant-menu-area .mu-restaurant-menu-content .mu-tab-content-area .mu-menu-item-nav li .media .media-left {
+    width: 110px;
+    height: 110px;
+  }
+  #mu-restaurant-menu .mu-restaurant-menu-area .mu-restaurant-menu-content .mu-tab-content-area .mu-menu-item-nav li .media .media-left a img {
+    width: 110px;
+    height: 110px;
+  }
+  #mu-restaurant-menu .mu-restaurant-menu-area .mu-restaurant-menu-content .mu-tab-content-area .mu-menu-item-nav li .media .media-body .media-heading {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  #mu-restaurant-menu .mu-restaurant-menu-area .mu-restaurant-menu-content .mu-tab-content-area .mu-menu-item-nav li .media .media-body .media-heading a {
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -ms-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    transition: all 0.5s;
+  }
+  #mu-restaurant-menu .mu-restaurant-menu-area .mu-restaurant-menu-content .mu-tab-content-area .mu-menu-item-nav li .media .media-body .mu-menu-price {
+    font-size: 16px;
+    font-weight: bold;
+    letter-spacing: 1.5px;
+    line-height: 20px;
+  }
+  #mu-restaurant-menu .mu-restaurant-menu-area .mu-restaurant-menu-content .mu-tab-content-area .mu-menu-item-nav li .media .media-body p {
+    margin-top: 10px;
+    font-size: 14px;
+  }
+
+
+.addItemBtn {
+    background: #c1a35f;
+    border: none;
+    border-radius: 0;
+    color: #fff;
+    float: right;
+    text-align: center;
+    padding: 10px 0px 8px 10px;
+    -webkit-transition: all .2s linear;
+    -moz-transition: all .2s linear;
+    -ms-transition: all .2s linear;
+    -o-transition: all .2s linear;
+    transition: all .2s linear;
+}

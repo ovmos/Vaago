@@ -1,0 +1,64 @@
+﻿@model Vaago.Models.Account
+@{
+    if (Session["userID"] == null)
+    {
+        Response.Redirect("~/Authentication");
+    }
+}
+
+@{
+    ViewBag.Title = "My Profile";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<!-- Start Profile section -->
+
+<section id="mu-user">
+    <div class="container">
+        <div class="col-md-12">
+            <div style="align-self:center" class="mu-user-area">
+                <div class="mu-title">
+                    <span class="mu-subtitle">My Area</span>
+                    <h2>Profile</h2>
+                    <i class="fa fa-spoon"></i>
+                    <span class="mu-title-bar"></span>
+                </div>
+                <div class="mu-user-content shadow-lg">
+                    <div class="row">
+
+                        @using (Html.BeginForm("Update_Profile", "UProfile", FormMethod.Post))
+                        {
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="label-class">Name</label>
+                                    @Html.TextBoxFor(x => x.name, new { @class = "form-control input value-class", disabled = "true", Value = @Model == null ? " " : @Model.name })
+                                </div>
+                                <hr class="rule" />
+                                <div class="form-group">
+                                    <label class="label-class">Email</label>
+                                    @Html.TextBoxFor(x => x.email, new { @class = "form-control input ", disabled = "true", Value = @Model == null ? " " : @Model.email })
+                                </div>
+                                <hr class="rule" />
+                                <div class="form-group">
+                                    <label class="label-class">Phone</label>
+                                    @Html.TextBoxFor(x => x.phone, new { @class = "form-control input value-class", disabled = "true", Value = @Model == null ? " " : @Model.phone })
+                                </div>
+                                <hr class="rule" />
+                                <div class="form-group">
+                                    <label class="label-class">Address</label>
+                                    @Html.TextAreaFor(x => x.location, new { @class = "form-control input value-class", disabled = "true", @Value = @Model == null ? " " : @Model.location })
+                                </div>
+                                <div class="btn-control">
+                                    <button type="button" class="btn user-btn" onclick="editProfile()">Edit Profile</button>
+                                    <button type="submit" class="btn user-btn value-class" disabled onclick="updateProfile()">Save Changes</button>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Contact section -->

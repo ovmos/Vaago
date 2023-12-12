@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="849b763a8c7e496e809ee16d881e12a2" Name="Diagram1">
+        <EntityTypeShape EntityType="VaagoProjectModel.Account" Width="1.5" PointX="4.375" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="VaagoProjectModel.Menu" Width="1.5" PointX="7" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="VaagoProjectModel.Order_Details" Width="1.5" PointX="10.75" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="VaagoProjectModel.Reservation" Width="1.5" PointX="13.5" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="VaagoProjectModel.Role" Width="1.5" PointX="1.375" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="VaagoProjectModel.SiteMessage" Width="1.5" PointX="13.625" PointY="1.125" IsExpanded="true" />
+        <AssociationConnector Association="VaagoProjectModel.FK__Accounts__accoun__2DE6D218" ManuallyRouted="false" />
+        <AssociationConnector Association="VaagoProjectModel.FK__Order_Det__itemI__7A3223E8" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="VaagoProjectModel.Cart" Width="1.5" PointX="4.75" PointY="5.25" />
+        <AssociationConnector Association="VaagoProjectModel.FK__Cart__itemID__1B9317B3" />
+        <EntityTypeShape EntityType="VaagoProjectModel.Order" Width="1.5" PointX="7.625" PointY="0.875" />
+        <AssociationConnector Association="VaagoProjectModel.FK__Orders__Customer__756D6ECB" />
+        <AssociationConnector Association="VaagoProjectModel.FK__Order_Det__order__7849DB76" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

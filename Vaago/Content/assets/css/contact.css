@@ -1,0 +1,112 @@
+/*==================
+ CONTACT SECTION
+====================*/
+#mu-contact {
+    display: inline;
+    float: left;
+    padding: 200px 0;
+    width: 100%;
+}
+
+#mu-contact .mu-contact-area {
+    display: inline;
+    float: left;
+    width: 100%;
+}
+
+#mu-contact .mu-contact-area .mu-contact-content {
+    display: inline;
+    float: left;
+    margin-top: 30px;
+    width: 100%;
+}
+
+#mu-contact .mu-contact-area .mu-contact-content .mu-contact-left {
+    display: inline;
+    float: left;
+    font-family: "Open Sans", sans-serif;
+    width: 100%;
+}
+
+.input {
+    color: #000;
+    border-radius: 0;
+    height: 40px;
+    box-shadow: none;
+    padding: 10px;
+}
+
+#mu-contact .mu-contact-area .mu-contact-content .mu-contact-left .form-group {
+    margin-bottom: 25px;
+}
+
+#mu-contact .mu-contact-area .mu-contact-content .mu-contact-left .form-group label {
+    font-size: 16px;
+    margin-bottom: 8px;
+    letter-spacing: 0.5px;
+}
+
+#mu-contact .mu-contact-area .mu-contact-content .mu-contact-left .mu-contact-form input[type="text"],
+#mu-contact .mu-contact-area .mu-contact-content .mu-contact-left .mu-contact-form input[type="email"] {
+    color: #000;
+    border-radius: 0;
+    height: 40px;
+}
+
+    #mu-contact .mu-contact-area .mu-contact-content .mu-contact-left .mu-contact-form input[type="text"]:focus,
+    #mu-contact .mu-contact-area .mu-contact-content .mu-contact-left .mu-contact-form input[type="email"]:focus {
+        box-shadow: none;
+    }
+
+#mu-contact .mu-contact-area .mu-contact-content .mu-contact-left .mu-contact-form textarea {
+    color: #000;
+    border-radius: 0;
+    padding: 10px;
+}
+
+    #mu-contact .mu-contact-area .mu-contact-content .mu-contact-left .mu-contact-form textarea:focus {
+        box-shadow: none;
+    }
+
+#mu-contact .mu-contact-area .mu-contact-content .mu-contact-right {
+    display: inline;
+    float: left;
+    padding: 0 30px;
+    width: 100%;
+}
+
+    #mu-contact .mu-contact-area .mu-contact-content .mu-contact-right .mu-contact-widget {
+        display: inline;
+        float: left;
+        margin-bottom: 25px;
+        width: 100%;
+    }
+
+        #mu-contact .mu-contact-area .mu-contact-content .mu-contact-right .mu-contact-widget h3 {
+            margin-top: 0px;
+        }
+
+        #mu-contact .mu-contact-area .mu-contact-content .mu-contact-right .mu-contact-widget > p {
+            letter-spacing: 0.5px;
+            line-height: 26px;
+        }
+
+        #mu-contact .mu-contact-area .mu-contact-content .mu-contact-right .mu-contact-widget address {
+            margin-top: 20px;
+        }
+
+            #mu-contact .mu-contact-area .mu-contact-content .mu-contact-right .mu-contact-widget address p {
+                letter-spacing: 0.5px;
+            }
+
+                #mu-contact .mu-contact-area .mu-contact-content .mu-contact-right .mu-contact-widget address p i {
+                    margin-right: 10px;
+                    width: 20px;
+                    text-align: center;
+                }
+
+                #mu-contact .mu-contact-area .mu-contact-content .mu-contact-right .mu-contact-widget address p span {
+                    display: inline-block;
+                    margin-right: 20px;
+                    min-width: 130px;
+                }

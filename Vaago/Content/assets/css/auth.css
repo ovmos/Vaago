@@ -1,0 +1,149 @@
+
+#mu-auth {
+    display: inline;
+    float: left;
+    padding: 150px 0;
+    width: 100%;
+}
+
+
+.d-flex{
+    display: flex;
+    flex: 1
+}
+
+.flex-row{
+    flex-direction: row;
+}
+.flex-column {
+    flex-direction: column;
+}
+
+
+
+hr {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border: 0;
+    color: white;
+    border-top: 1px solid rgba(255,255,255,.4);
+}
+
+@media screen and (max-width: 1440px) .login-title {
+    font-size: 45px;
+}
+
+@media screen and (max-width: 2560px) .login-title {
+    font-size: 45px;
+}
+
+.login-title {
+    font-weight: 300;
+}
+.shadow-lg {
+    box-shadow: 0 1rem 3rem rgba(0,0,0,.175) !important;
+}
+
+.display-4 {
+    font-size: 4.5rem;
+    font-weight: 300;
+    line-height: 1.2;
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+}
+
+.input {
+    color: #000;
+    border-radius: 0;
+    height: 40px;
+    box-shadow: none;
+    padding: 10px;
+}
+
+.auth-form {
+    max-width: 400px;
+    margin: 2% auto;
+    padding: 30px 25px;
+    border-radius: 8px;
+    background-color: #2C2C2C;
+    color: white
+}
+    .auth-form  label, .auth-form  a{
+        color: white;
+    }
+
+.form-group {
+    margin: 15px 5px;
+}
+  
+  h1 {
+    margin: 0 0 30px 0;
+    text-align: center;
+  }
+  
+  input[type="radio"],
+  input[type="checkbox"] {
+    margin: 0 4px 8px 0;
+  }
+  
+  select {
+    padding: 6px;
+    height: 32px;
+    border-radius: 2px;
+  }
+
+.btn-auth {
+    padding: 10px 30px;
+    color: #FFF;
+    background-color: #c1a35f;
+    font-size: 18px;
+    text-align: center;
+    font-style: normal;
+    border-radius: 5px;
+    width: 100%;
+    border: none;
+    margin-bottom: 10px;
+}
+
+.input {
+    color: #000;
+    border-radius: 0;
+    height: 40px;
+    box-shadow: none;
+    padding: 10px;
+}
+  
+  fieldset {
+    margin-bottom: 30px;
+    border: none;
+  }
+  
+  legend {
+    font-size: 1.4em;
+    margin-bottom: 10px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 8px;
+
+  }
+  
+  label.light {
+    font-weight: 300;
+    display: inline;
+  }
+  
+  .number {
+    background-color: #5fcf80;
+    color: #fff;
+    height: 30px;
+    width: 30px;
+    display: inline-block;
+    font-size: 0.8em;
+    margin-right: 4px;
+    line-height: 30px;
+    text-align: center;
+    text-shadow: 0 1px 0 rgba(255,255,255,0.2);
+    border-radius: 100%;
+  }
+  
