@@ -1,0 +1,77 @@
+﻿@model IEnumerable<Vaago.Models.Order>
+
+@{
+
+    if (Session["Admin"] == null)
+    {
+        Response.Redirect("~/Admin");
+    }
+}@{
+    ViewBag.Title = "AdminOrders";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    var previousCust = 654;
+
+
+}
+
+<section>
+    <div>
+        <span class="page-title">ORDERS</span>
+        <hr />
+    </div>
+    <div class="maincard-cont">
+        <div style="justify-content: flex-end; text-align: start; width: 98%">
+            <button class="btn btn-danger" onclick="location.href='@Url.Action("DeleteItem","AdminMenu") '">Delete Item</button>
+        </div>
+        <hr class="thin-hr" />
+        <div class="table-div">
+            <table class="table table-striped ">
+                <thead class="bg-dark text-white">
+                    <tr>
+                        <th></th>
+                        <th>Order ID</th>
+                        <th>Order By</th>
+                        <th>Order Date</th>
+                        <th>Order Time</th>
+                        <th>Status</th>
+                        <th>City</th>
+                        <th>Delievery Charges</th>
+                        <th>Amount</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @{
+                        if (Model == null)
+                        {
+                            <tr></tr>
+                        }
+                        else
+                        {
+                            foreach (var item in Model)
+                            {
+
+                                <tr>
+                                    <td><input type="checkbox" /></td>
+                                    <td> @item.orderID</td>
+                                    <td> @item.Account.name</td>
+                                    <td> @item.orderDate</td>
+                                    <td> @item.orderTime</td>
+                                    <td> @item.orderStatus </td>
+                                    <td> @item.City</td>
+                                    <td>Rs. @item.deliveryCharges</td>
+                                    <td>Rs. @item.Amount</td>
+                                    <td><button class="btn btn-sm btn-danger" onclick="location.href='@Url.Action("ViewOrder", "AdminOrders", new { orderID=item.orderID })'">View</button></td>
+                                </tr>
+
+                            };
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
+

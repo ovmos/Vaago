@@ -1,0 +1,41 @@
+﻿@model Vaago.Models.Account
+@{
+    ViewBag.Title = "Settings";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<section>
+    <div>
+        <span class="page-title"> My Profile</span>
+        <hr />
+    </div>
+    <div class="maincard-cont">
+        @using (Html.BeginForm("Update_Admin", "Setting", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            <div class="form-group">
+                <label>Account Name</label>
+                @Html.TextBoxFor(x => x.name, new { disabled = "true", required = "True", type = "text", @class = "form-control admin-profile-input" })
+            </div>
+            <div class="form-group">
+                <label>Email</label>
+                @Html.TextBoxFor(x => x.email, new { disabled = "true", required = "True", type = "email", @class = "form-control" })
+            </div>
+            <div class="form-group">
+                <label>Password</label>
+                @Html.TextBoxFor(x => x.pass, new { disabled = "true", required = "True", type = "text", @class = "form-control admin-profile-input" })
+            </div>
+            <div class="form-group">
+                <label>Phone</label>
+                @Html.TextBoxFor(x => x.phone, new { disabled = "true", required = "True", type = "text", @class = "form-control admin-profile-input" })
+            </div>
+            <div class="form-group">
+                <label>Address</label>
+                @Html.TextBoxFor(x => x.location, new { disabled = "true", required = "True", type = "text", @class = "form-control admin-profile-input" })
+            </div>
+
+            <button style="margin: 0px 25px" type="button" onclick="editAdminProfile()" class="btn btn-lg btn-info">Update</button>
+            <button type="submit" class="btn btn-lg btn-success admin-profile-input" disabled="disabled">Submit</button>
+        }
+    </div>
+</section>

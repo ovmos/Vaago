@@ -1,0 +1,43 @@
+﻿@model Vaago.Models.Menu
+@{
+    ViewBag.Title = "Menu Insert";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    var categoryList = new List<string>() { "LunchNBreakfast", "Meals", "BBQ", "Chinese", "Rice", "Beverages" };
+
+}
+
+<section>
+    <div>
+        <span class="page-title"> MENU ITEMS</span>
+        <hr />
+    </div>
+    <div class="maincard-cont">
+        @using (Html.BeginForm("Add", "AdminMenu", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            <div class="form-group">
+                <label>Item Name</label>
+                @Html.TextBoxFor(x => x.itemName, new { required = "True", type = "text", placeholder = "Chicken Karahi", @class = "form-control" })
+            </div>
+            <div class="form-group">
+                <label>Price</label>
+                @Html.TextBoxFor(x => x.itemPrice, new { required = "True", type = "number", placeholder = "670", @class = "form-control" })
+            </div>
+            <div class="form-group">
+                <label>Description</label>
+                @Html.TextBoxFor(x => x.itemDesc, new { required = "True", type = "text", placeholder = "write down the ingredients here", @class = "form-control" })
+            </div>
+            <div class="form-group">
+                <label>Category</label>
+                @Html.DropDownListFor(x => x.itemCategory, new SelectList(categoryList), "Select Menu Type", new { @required = "true", @class = "form-control" })
+            </div>
+            <div class="form-group">
+                <label>Image</label>
+                <input type="file" class="btn" name="imgFile" required />
+
+            </div>
+
+            <button type="button" onclick="location.href = '@Url.Action("Index","AdminMenu")'" class="btn btn-lg btn-danger">Back</button>
+            <button type="submit" class="btn btn-lg btn-success">Submit</button>
+        }
+    </div>
+</section>

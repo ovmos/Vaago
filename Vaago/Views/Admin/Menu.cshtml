@@ -1,0 +1,58 @@
+﻿@model IEnumerable<Vaago.Models.Menu>
+@{
+    ViewBag.Title = "Menu";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<section>
+    <div>
+        <span class="page-title"> MENU ITEMS</span>
+        <hr />
+    </div>
+    <div class="maincard-cont">
+        <div style="justify-content: flex-end; text-align: end; width: 98%">
+            <button class="btn btn-success" onclick="location.href='@Url.Action("AddItemView","AdminMenu") '">Add Item</button>
+            <button class="btn btn-danger" onclick="location.href='@Url.Action("DeleteItem","AdminMenu") '">Delete Item</button>
+        </div>
+        <hr class="thin-hr" />
+        <div class="table-div">
+            <table class="table table-striped  admintable">
+                <thead class="bg-dark text-white">
+                    <tr>
+                        <th>ITEM ID</th>
+                        <th>SKU</th>
+                        <th>NAME</th>
+                        <th style="width: 25%;">DESCRIPTION</th>
+                        <th>CATEGORY</th>
+                        <th>PRICE</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{
+                        if (Model == null)
+                        {
+                            <tr></tr>
+                        }
+                        else
+                        {
+                            foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@item.itemID</td>
+                                    <td>@item.itemSKU</td>
+                                    <td>@item.itemName</td>
+                                    <td>@item.itemDesc</td>
+                                    <td>@item.itemCategory</td>
+                                    <td>RS.@item.itemPrice</td>
+                                </tr>
+                            };
+                        }
+                    }
+
+
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</section>
