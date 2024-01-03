@@ -122,6 +122,7 @@
     <Folder Include="Views\AdminOrders\" />
     <Folder Include="Views\Cart\" />
     <Folder Include="Views\Checkout\" />
+    <Folder Include="Views\Contact\" />
     <Folder Include="Views\Gallery\" />
     <Folder Include="Views\Menu\" />
     <Folder Include="Views\Setting\" />
@@ -140,6 +141,7 @@
     <Compile Include="Controllers\AuthenticationController.cs" />
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\CheckoutController.cs" />
+    <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\GalleryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MenuController.cs" />
