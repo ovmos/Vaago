@@ -1,0 +1,87 @@
+﻿@model Vaago.Models.SiteMessage
+@{
+    /**/
+
+    ViewBag.Title = "Contact us";
+}
+
+<!-- Start Contact section -->
+
+<section id="mu-contact">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="mu-contact-area">
+                    <div class="mu-title">
+                        <span class="mu-subtitle">Get In Touch</span>
+                        <h2>Contact Us</h2>
+                        <i class="fa fa-spoon"></i>
+                        <span class="mu-title-bar"></span>
+                    </div>
+                    <div class="mu-contact-content">
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                @using (Html.BeginForm("SendMessage", "Contact", FormMethod.Post))
+                                {
+                                    <div class="mu-contact-form">
+                                        <div class="mu-contact-left">
+                                            <div class="form-group">
+                                                <label for="name">Your Name</label>
+                                                @Html.TextBoxFor(x => x.msgName, new { @required = "True", @id = "name", @type = "text", @placeholder = "Name", @class = "form-control input" })
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="email">Email address</label>
+                                                @Html.TextBoxFor(x => x.msgEmail, new { @required = "True", @id = "email", @type = "email", @placeholder = "Email", @class = "form-control input" })
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="subject">Subject</label>
+                                                @Html.TextBoxFor(x => x.msgSubject, new { @required = "True", @id = "subject", @type = "text", @placeholder = "Subject", @class = "form-control input" })
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="message">Message</label>
+                                                @Html.TextAreaFor(x => x.msgBody, new { @required = "True", @id = "message", @cols = "30", rows = "8", @placeholder = "Type Your Message", @class = "form-control input" })
+                                            </div>
+                                            <button type="submit" class="mu-send-btn">
+                                                Send Message
+                                            </button>
+                                        </div>
+                                    </div>
+                                }
+
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mu-contact-right">
+                                    <div class="mu-contact-widget">
+                                        <h3>Office Address</h3>
+                                        <p>
+                                            Plot # 32-34، Allama I. I. Qazi Chowk, Block A Sindhi Muslim CHS (SMCHS), Karachi, Karachi City, Sindh 75500
+                                        </p>
+                                        <address>
+                                            <p><i class="fa fa-phone"></i> (021) 241 1264</p>
+                                            <p>
+                                                <i class="fa fa-envelope-o"></i>contact@vaago.io
+                                            </p>
+                                            <p>
+                                                <i class="fa fa-map-marker"></i>76300 St. Karachi City, Pakistan
+                                            </p>
+                                        </address>
+                                    </div>
+                                    <div class="mu-contact-widget">
+                                        <h3>Open Hours</h3>
+                                        <address>
+                                            <p><span>Monday - Friday</span> 9:00 AM to 2:00 AM</p>
+                                            <p><span>Saturday</span>  9:00 AM to 2:00 AM</p>
+                                            <p><span>Sunday</span>  7:00 AM to 12:00 PM</p>
+                                        </address>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Contact section -->

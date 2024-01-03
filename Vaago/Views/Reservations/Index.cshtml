@@ -1,0 +1,75 @@
+﻿@model Vaago.Models.Reservation
+
+@{
+    ViewBag.Title = "Reservation";
+    var eventList = new List<string>() { "Get together", "Birthday Event", "Family Dine-in" };
+}
+
+<!-- Start Reservation section -->
+<section id="mu-reservation">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="mu-reservation-area">
+                    <div class="mu-title">
+                        <span class="mu-subtitle">Make A</span>
+                        <h2>Reservation</h2>
+                        <i class="fa fa-spoon"></i>
+                        <span class="mu-title-bar"></span>
+                    </div>
+                    <div class="mu-reservation-content">
+                        <p>Book your table for get togethers with friend and family. We will get back to you soon</p>
+                        <p>Feel free to call us on 021 1234567 to book your table via call.</p>
+                        @using (Html.BeginForm("Make_Reservation", "Reservations", FormMethod.Post))
+                        {
+                            <form class="mu-reservation-form">
+                                <div class="row">
+
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            @Html.TextBoxFor(x => x.byName, new { @required = "true", @class = "form-control input", @placeholder = "Enter your full name" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            @Html.TextBoxFor(x => x.byEmail, new { @required = "true", @type = "email", @class = "form-control input", @placeholder = "jhon.Doe@someting.com" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            @Html.TextBoxFor(x => x.byContact, new { @required = "true", @type = "text", @class = "form-control input", @placeholder = "03330XXXXXXX", @pattern = "{03}[0-9][0-9]\\d{7}" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            @Html.TextBoxFor(x => x.numberOfPersons, new { @required = "true", @type = "number", @class = "form-control input", @placeholder = "Number of Persons" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            @Html.TextBoxFor(x => x.reserveDateTime, new { @required = "true", @type = "datetime-local", @class = "form-control input", @placeholder = "Enter your reservation Date and Time" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            @Html.DropDownListFor(m => m.eventType, new SelectList(eventList), "Select Event Type", new { @required = "true", @class = "form-control input" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            @Html.TextAreaFor(x => x.byMessage, new { @required = "true", @cols = "30", rows = "10", placeholder = "Special Request", @class = "form-control input" })
+                                        </div>
+                                    </div>
+                                    <div class="btn-control">
+                                        <button type="submit" class="reservation-btn">Make Reservation</button>
+                                    </div>
+                                </div>
+                            </form>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Reservation section -->

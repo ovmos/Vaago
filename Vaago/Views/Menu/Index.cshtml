@@ -1,0 +1,363 @@
+﻿@model List<Vaago.Models.Menu>
+
+
+
+@{
+    ViewBag.Title = "Menu";
+}
+<!-- Start Restaurant Menu -->
+<section id="mu-restaurant-menu">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="mu-restaurant-menu-area">
+                    <div class="mu-title">
+                        <span class="mu-subtitle">Discover</span>
+                        <h2>OUR MENU</h2>
+                        <i class="fa fa-spoon"></i>
+                        <span class="mu-title-bar"></span>
+                    </div>
+                    <div class="mu-restaurant-menu-content">
+
+                        <ul class="nav nav-tabs mu-restaurant-menu">
+                            <li class="active"><a href="#LunchNBreakfast" data-toggle="tab">Lunch & Breakfast</a></li>
+                            <li><a href="#Meals" data-toggle="tab">Meals</a></li>
+                            <li><a href="#BBQ" data-toggle="tab">BBQ</a></li>
+                            <li><a href="#Chinese" data-toggle="tab">Chinese</a></li>
+                            <li><a href="#Rice" data-toggle="tab">Rice</a></li>
+                            <li><a href="#Beverages" data-toggle="tab">Beverages</a></li>
+                        </ul>
+
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+
+                            <div class="tab-pane fade in active" id="LunchNBreakfast">
+                                <div class="mu-tab-content-area">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <ul style="display: flex; flex:1; flex-wrap: wrap; flex-direction: row" class="mu-menu-item-nav">
+                                                @foreach (var item in Model)
+                                                {
+                                                    if (item.itemCategory == "LunchNBreakfast")
+                                                    {
+                                                        <li accesskey="@item.itemID" class">
+                                                            <span hidden>@item.itemSKU</span>
+                                                            <span hidden>@item.itemCategory</span>
+                                                            <div class="media">
+                                                                <div class="media-left">
+                                                                    <a href="javascript:void(0)">
+                                                                        <img class="media-object"
+                                                                             src="@item.itemImgpath"
+                                                                             alt="img" />
+                                                                    </a>
+                                                                </div>
+                                                                <div class="media-body">
+                                                                    @using (Html.BeginForm("Add_ToCart", "Menu", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                                                                    {
+                                                                        <button class="btn addItemBtn"
+                                                                                id="addToCart" name="addToCart" value="@item.itemID">
+                                                                            <i class="fa fa-shopping-bag" style="font-size: 18px; ">
+                                                                                <span style="margin: auto 15px;">Add</span>
+                                                                            </i>
+                                                                        </button>
+                                                                    }
+                                                                    <h4 class="media-heading">
+                                                                        <a href="javascript:void(0)">@item.itemName</a>
+                                                                    </h4>
+                                                                    <span class="mu-menu-price">Rs. @item.itemPrice</span>
+                                                                    <p>
+                                                                        @item.itemDesc
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                    }
+                                                    else
+                                                    {
+                                                        continue;
+                                                    }
+
+                                                }
+                                            </ul>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="tab-pane fade" id="Meals">
+                                <div class="mu-tab-content-area">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <ul style="display: flex; flex:1; flex-wrap: wrap; flex-direction: row" class="mu-menu-item-nav">
+                                                @foreach (var item in Model)
+                                                {
+                                                    if (item.itemCategory == "Meals")
+                                                    {
+                                                        <li accesskey="@item.itemID" class">
+                                                            <span hidden>@item.itemSKU</span>
+                                                            <span hidden>@item.itemCategory</span>
+                                                            <div class="media">
+                                                                <div class="media-left">
+                                                                    <a href="javascript:void(0)">
+                                                                        <img class="media-object"
+                                                                             src="@item.itemImgpath"
+                                                                             alt="img" />
+                                                                    </a>
+                                                                </div>
+                                                                <div class="media-body">
+                                                                    @using (Html.BeginForm("Add_ToCart", "Menu", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                                                                    {
+                                                                        <button class="btn addItemBtn"
+                                                                                id="addToCart" name="addToCart" value="@item.itemID">
+                                                                            <i class="fa fa-shopping-bag" style="font-size: 18px; ">
+                                                                                <span style="margin: auto 15px;">Add</span>
+                                                                            </i>
+                                                                        </button>
+                                                                    }
+                                                                    <h4 class="media-heading">
+                                                                        <a href="javascript:void(0)">@item.itemName</a>
+                                                                    </h4>
+                                                                    <span class="mu-menu-price">Rs. @item.itemPrice</span>
+                                                                    <p>
+                                                                        @item.itemDesc
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                    }
+                                                    else
+                                                    {
+                                                        continue;
+                                                    }
+
+                                                }
+                                            </ul>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="tab-pane fade" id="BBQ">
+                                <div class="mu-tab-content-area">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <ul style="display: flex; flex:1; flex-wrap: wrap; flex-direction: row" class="mu-menu-item-nav">
+                                                @foreach (var item in Model)
+                                                {
+                                                    if (item.itemCategory == "BBQ")
+                                                    {
+                                                        <li accesskey="@item.itemID" class">
+                                                            <span hidden>@item.itemSKU</span>
+                                                            <span hidden>@item.itemCategory</span>
+                                                            <div class="media">
+                                                                <div class="media-left">
+                                                                    <a href="javascript:void(0)">
+                                                                        <img class="media-object"
+                                                                             src="@item.itemImgpath"
+                                                                             alt="img" />
+                                                                    </a>
+                                                                </div>
+                                                                <div class="media-body">
+                                                                    @using (Html.BeginForm("Add_ToCart", "Menu", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                                                                    {
+                                                                        <button class="btn addItemBtn"
+                                                                                id="addToCart" name="addToCart" value="@item.itemID">
+                                                                            <i class="fa fa-shopping-bag" style="font-size: 18px; ">
+                                                                                <span style="margin: auto 15px;">Add</span>
+                                                                            </i>
+                                                                        </button>
+                                                                    }
+                                                                    <h4 class="media-heading">
+                                                                        <a href="javascript:void(0)">@item.itemName</a>
+                                                                    </h4>
+                                                                    <span class="mu-menu-price">Rs. @item.itemPrice</span>
+                                                                    <p>
+                                                                        @item.itemDesc
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                    }
+                                                    else
+                                                    {
+                                                        continue;
+                                                    }
+
+                                                }
+                                            </ul>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="tab-pane fade" id="Chinese">
+                                <div class="mu-tab-content-area">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <ul style="display: flex; flex:1; flex-wrap: wrap; flex-direction: row" class="mu-menu-item-nav">
+                                                @foreach (var item in Model)
+                                                {
+                                                    if (item.itemCategory == "Chinese")
+                                                    {
+                                                        <li accesskey="@item.itemID" class">
+                                                            <span hidden>@item.itemSKU</span>
+                                                            <span hidden>@item.itemCategory</span>
+                                                            <div class="media">
+                                                                <div class="media-left">
+                                                                    <a href="javascript:void(0)">
+                                                                        <img class="media-object"
+                                                                             src="@item.itemImgpath"
+                                                                             alt="img" />
+                                                                    </a>
+                                                                </div>
+                                                                <div class="media-body">
+                                                                    @using (Html.BeginForm("Add_ToCart", "Menu", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                                                                    {
+                                                                        <button class="btn addItemBtn"
+                                                                                id="addToCart" name="addToCart" value="@item.itemID">
+                                                                            <i class="fa fa-shopping-bag" style="font-size: 18px; ">
+                                                                                <span style="margin: auto 15px;">Add</span>
+                                                                            </i>
+                                                                        </button>
+                                                                    }
+                                                                    <h4 class="media-heading">
+                                                                        <a href="javascript:void(0)">@item.itemName</a>
+                                                                    </h4>
+                                                                    <span class="mu-menu-price">Rs. @item.itemPrice</span>
+                                                                    <p>
+                                                                        @item.itemDesc
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                    }
+                                                    else
+                                                    {
+                                                        continue;
+                                                    }
+
+                                                }
+                                            </ul>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="tab-pane fade" id="Rice">
+                                <div class="mu-tab-content-area">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <ul style="display: flex; flex:1; flex-wrap: wrap; flex-direction: row" class="mu-menu-item-nav">
+                                                @foreach (var item in Model)
+                                                {
+                                                    if (item.itemCategory == "Rice")
+                                                    {
+                                                        <li accesskey="@item.itemID" class">
+                                                            <span hidden>@item.itemSKU</span>
+                                                            <span hidden>@item.itemCategory</span>
+                                                            <div class="media">
+                                                                <div class="media-left">
+                                                                    <a href="javascript:void(0)">
+                                                                        <img class="media-object"
+                                                                             src="@item.itemImgpath"
+                                                                             alt="img" />
+                                                                    </a>
+                                                                </div>
+                                                                <div class="media-body">
+                                                                    @using (Html.BeginForm("Add_ToCart", "Menu", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                                                                    {
+                                                                        <button class="btn addItemBtn"
+                                                                                id="addToCart" name="addToCart" value="@item.itemID">
+                                                                            <i class="fa fa-shopping-bag" style="font-size: 18px; ">
+                                                                                <span style="margin: auto 15px;">Add</span>
+                                                                            </i>
+                                                                        </button>
+                                                                    }
+                                                                    <h4 class="media-heading">
+                                                                        <a href="javascript:void(0)">@item.itemName</a>
+                                                                    </h4>
+                                                                    <span class="mu-menu-price">Rs. @item.itemPrice</span>
+                                                                    <p>
+                                                                        @item.itemDesc
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                    }
+                                                    else
+                                                    {
+                                                        continue;
+                                                    }
+
+                                                }
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="tab-pane fade" id="Beverages">
+                                <div class="mu-tab-content-area">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <ul style="display: flex; flex:1; flex-wrap: wrap; flex-direction: row" class="mu-menu-item-nav">
+                                                @foreach (var item in Model)
+                                                {
+                                                    if (item.itemCategory == "Beverages")
+                                                    {
+                                                        <li accesskey="@item.itemID" class">
+                                                            <span hidden>@item.itemSKU</span>
+                                                            <span hidden>@item.itemCategory</span>
+                                                            <div class="media">
+                                                                <div class="media-left">
+                                                                    <a href="javascript:void(0)">
+                                                                        <img class="media-object"
+                                                                             src="@item.itemImgpath"
+                                                                             alt="img" />
+                                                                    </a>
+                                                                </div>
+                                                                <div class="media-body">
+                                                                    @using (Html.BeginForm("Add_ToCart", "Menu", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                                                                    {
+                                                                        <button class="btn addItemBtn"
+                                                                                id="addToCart" name="addToCart" value="@item.itemID">
+                                                                            <i class="fa fa-shopping-bag" style="font-size: 18px; ">
+                                                                                <span style="margin: auto 15px;">Add</span>
+                                                                            </i>
+                                                                        </button>
+                                                                    }
+                                                                    <h4 class="media-heading">
+                                                                        <a href="javascript:void(0)">@item.itemName</a>
+                                                                    </h4>
+                                                                    <span class="mu-menu-price">Rs. @item.itemPrice</span>
+                                                                    <p>
+                                                                        @item.itemDesc
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                    }
+                                                    else
+                                                    {
+                                                        continue;
+                                                    }
+
+                                                }
+                                            </ul>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Restaurant Menu -->

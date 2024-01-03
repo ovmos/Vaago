@@ -120,11 +120,6 @@
     <Folder Include="Views\AdminCustomers\" />
     <Folder Include="Views\AdminMenu\" />
     <Folder Include="Views\AdminOrders\" />
-    <Folder Include="Views\Cart\" />
-    <Folder Include="Views\Checkout\" />
-    <Folder Include="Views\Contact\" />
-    <Folder Include="Views\Gallery\" />
-    <Folder Include="Views\Menu\" />
     <Folder Include="Views\Setting\" />
   </ItemGroup>
   <ItemGroup>
@@ -431,6 +426,12 @@
     <Content Include="Views\Admin\Menu_Insert.cshtml" />
     <Content Include="Views\Admin\Settings.cshtml" />
     <Content Include="Views\Admin\ViewOrder.cshtml" />
+    <Content Include="Views\Cart\Index.cshtml" />
+    <Content Include="Views\Checkout\Index.cshtml" />
+    <Content Include="Views\Contact\Index.cshtml" />
+    <Content Include="Views\Gallery\Index.cshtml" />
+    <Content Include="Views\Menu\Index.cshtml" />
+    <Content Include="Views\Reservations\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

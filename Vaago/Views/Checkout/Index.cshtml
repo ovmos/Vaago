@@ -1,0 +1,240 @@
+﻿@using Vaago.Models
+@model IEnumerable<CheckoutModel>
+
+@{
+    if (Session["userID"] == null)
+    {
+        Response.Redirect("~/Authentication");
+    }
+}
+
+@{
+    ViewBag.Title = "Checkout";
+    IDictionary<string, string> detailObj = new Dictionary<string, string>();
+    var count = Model.Count();
+
+    foreach (var i in Model)
+    {
+        detailObj.Add("Username", i.user.name);
+        detailObj.Add("Email", i.user.email);
+        detailObj.Add("Phone", i.user.phone);
+        detailObj.Add("Address", i.user.location);
+        detailObj.Add("totalAmount", (i.cartItem.totalAmount).ToString());
+        break;
+    }
+
+
+
+}
+
+<style>
+    .d-flex {
+        display: flex;
+        flex: 1;
+        flex-direction: row;
+    }
+
+    .flex-column {
+        flex-direction: column;
+    }
+
+    .border {
+        border: 1px solid #dee2e6 !important;
+    }
+
+    .border-left {
+        border-left: 1px solid #dee2e6 !important;
+    }
+
+    .right-title {
+        font-weight: 1000
+    }
+
+    .font-weight-bold {
+        font-weight: 800 !important;
+    }
+</style>
+
+<!-- CHECKOUT Checkout -->
+<section id="mu-checkout">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="mu-checkout-area">
+                    <div class="mu-title">
+                        <span class="mu-subtitle">Billing & Shipping</span>
+                        <h2>Checkout</h2>
+                        <i class="fa fa-spoon"></i>
+                        <span class="mu-title-bar"></span>
+                    </div>
+                    <div class="mu-checkout-content">
+
+                        @using (Html.BeginForm("Index", "Checkout", FormMethod.Post))
+                        {
+                            <div class="row">
+                                <!-- Detail SIDE -->
+                                <div class="col-md-6">
+                                    <div class="mu-checkout-left">
+                                        <form class="mu-checkout-form">
+                                            <div class="form-group">
+                                                <label for="name">Name *</label>
+                                                <input type="text"
+                                                       class="form-control"
+                                                       id="checkoutName"
+                                                       value="@detailObj["Username"]"
+                                                       required
+                                                       placeholder="Name" />
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="email">Email address *</label>
+                                                <input type="email"
+                                                       class="form-control"
+                                                       id="checkoutEmail"
+                                                       value="@detailObj["Email"]"
+                                                       disabled
+                                                       required
+                                                       placeholder="Email" />
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="subject">Phone *</label>
+                                                <input type="tel"
+                                                       class="form-control"
+                                                       id="checkoutPhone"
+                                                       value="@detailObj["Phone"]"
+                                                       required
+                                                       placeholder="+923303640391" />
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="subject">City *</label>
+                                                <input type="text"
+                                                       class="form-control"
+                                                       id="checkoutCity"
+                                                       value="Karachi"
+                                                       required
+                                                       disabled />
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="message">Address *</label>
+                                                <textarea class="form-control"
+                                                          id="checkoutAddress"
+                                                          cols="30"
+                                                          rows="3"
+                                                          value="@detailObj["Address"]"
+                                                          required>"@detailObj["Address"]"</textarea>
+                                            </div>
+                                            <hr />
+
+                                            <div class="form-group">
+                                                <label for="message">Order Notes</label>
+                                                <textarea class="form-control"
+                                                          id="checkoutMessage"
+                                                          cols="30"
+                                                          rows="4"
+                                                          placeholder="Any special requests."></textarea>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+
+                                <!-- ORDER SIDE -->
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-6 border-left">
+                                    <div>
+                                        <p class="text-center right-title">YOUR ORDER</p>
+                                    </div>
+                                    <hr />
+                                    <div class="cont">
+                                        <!-- HEADING ITEM -->
+                                        <div class="row m-0">
+                                            <div class="col-md-9">
+                                                <p class="m-0 font-weight-bold">PRODUCT</p>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <p class="m-0 font-weight-bold">PRICE</p>
+                                            </div>
+                                        </div>
+                                        <hr class="py-0" />
+                                        <!-- ITEM -->
+
+                                        @foreach (var item in Model)
+                                        {
+
+                                            <div class="row m-0">
+                                                <div class="col-md-9">
+                                                    <p class="m-0 text-black-50">@item.menuItem.itemName</p>
+                                                </div>
+                                                <div class="col-md-1 text-black-50">
+                                                    <div class="d-flex flex-row">
+                                                        <p>Rs.</p>
+                                                        <p id="unitPrice">@item.menuItem.itemPrice</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
+
+
+                                        <hr class="border" />
+
+                                        <div class="row m-0 font-weight-bold">
+                                            <div class="col-md-9">
+                                                <span>Delivery Charges</span>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <div class="d-flex flex-row">
+                                                    <span>Rs.</span>
+                                                    <span id="deliveryChargesVal">50</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <hr />
+                                        <!-- TOTAL -->
+                                        <div class="row m-0 font-weight-bold">
+                                            <div class="col-md-9">
+                                                <span>Net Total</span>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <div class="d-flex">
+                                                    <span>Rs.</span>
+                                                    <span hidden id="itemsCount">@count</span>
+                                                    <span id="checkoutTotalVal">@detailObj["totalAmount"]</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <hr />
+
+                                        <div class="d-flex flex-column justify-content-center  align-items-center">
+
+                                            <a href="javascript:void(0)">
+                                                <input onclick="location.href='/'" type="button" class="btn btn-block checkoutBtnfinal" value="Confirm Order" />
+                                            </a>
+                                            <span class="text-center">*CASH ON DELIVERY</span>
+                                        </div>
+                                    </div>
+
+
+
+
+                                </div>
+                            </div>
+                        }
+
+                        <hr class="mx-5" />
+                        <div class="col-md-12 sec-cont">
+                            <div>
+                                Your personal data will be used to process your order, support your
+                                experience throughout this website, and for other purposes described in
+                                our privacy policy.
+                                <div class="ml-4">
+                                    <input required class="form-check-input" type="checkbox" value="" />
+                                    I have read and agree to the website terms and conditions *
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End checkout section -->

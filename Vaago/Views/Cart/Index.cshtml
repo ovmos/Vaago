@@ -1,0 +1,74 @@
+﻿@model IEnumerable<Vaago.Models.CartItem>
+@{
+    ViewBag.Title = "Cart";
+}
+
+
+<section id="cart-container">
+    <div class="mu-title">
+        <span class="mu-subtitle">Cart</span>
+    </div>
+    <hr />
+    <section class="mu-cart" id="cart">
+        <div class="container">
+
+            @{
+                if (Model == null)
+                {
+                    <div class="mu-title">
+                        <span class="mu-subtitle">Cart is Empty</span>
+                    </div>
+                }
+                else
+                {
+                    foreach (var cart in Model)
+                    {
+                        <article class="product" id="cartItem">
+                            <header>
+
+                                <a>
+                                    <img src="@cart.menuItem.itemImgpath"
+                                         alt="" />
+
+                                    <h3 class="remove">Remove Product</h3>
+                                </a>
+
+                            </header>
+
+                            <div class="content">
+                                <h1>@cart.menuItem.itemName</h1>
+
+                                <p>@cart.menuItem.itemDesc</p>
+                            </div>
+                            <footer class="content">
+                                @*<span class="qt-minus">-</span>*@
+                                @*<span class="qt">1</span>*@
+                                @*<span class="qt-plus">+</span>*@
+
+                                <h2 class="full-price"><span>Rs.</span><span class="itemFullPrice">@cart.menuItem.itemPrice</span></h2>
+
+                                @*<h2 class="price"><span>Rs.</span><span>@cart.menuItem.itemPrice</span></h2>*@
+                            </footer>
+                        </article>
+                    };
+                }
+            }
+
+
+
+        </div>
+    </section>
+</section>
+<footer id="site-footer" class="shadow-lg">
+    <hr style="border: 1px solid #d6a846; width: 80%; opacity: 0.1" />
+    <div class="container clearfix">
+        <div class="left">
+            <h2 class="subtotal">Subtotal: <span>00.0</span>/rs</h2>
+            <h3 class="shipping">Delivery: <span>50</span>/rs</h3>
+        </div>
+        <div class="right">
+            <h1 class="total">Total: <span id="totalBill">00.0</span> / RS</h1>
+            <input class="btn gotoCheckout checkoutBtn" type="submit" value="Checkout" />
+        </div>
+    </div>
+</footer>
